@@ -1,0 +1,197 @@
+# AZ Media — Cursor Rules (v2)
+# Place this in the repo root as `.cursorrules`.
+# Objective: Make Cursor reliably modify this Next.js + Tailwind + Framer Motion app with senior-level quality, safe refactors, and minimal diffs.
+
+==================================================
+PROJECT SNAPSHOT
+==================================================
+- Framework: Next.js 14 (App Router) + TypeScript
+- Styling: Tailwind CSS with teal-based brand tokens defined in `app/globals.css` and mapped in `tailwind.config.ts` as `theme.colors.brand.{50..900}`
+- Animations: Framer Motion (micro-interactions) + Lenis (smooth scroll)
+- Email: Nodemailer via `/api/send-quote` and `/api/contact` (SMTP from `.env`)
+- Estimator logic: `lib/pricing.ts` (services, features, base prices, complexity/urgency multipliers)
+- Main layout: `app/page.tsx`, components in `components/*`
+
+==================================================
+GOLDEN RULES
+==================================================
+1) **Plan first.** Always reply with a short PLAN listing the files you will edit/add, the data model impacts, and risks.
+2) **Minimal diffs.** Change only what is asked; preserve project conventions and file structure.
+3) **Type-safety.** No `any` unless absolutely required. Add/adjust types as needed.
+4) **Single source of truth.** Pricing/features live in `lib/pricing.ts`. Do not duplicate or hardcode pricing in components.
+5) **A11y & SEO.** Use semantic HTML, labelled controls, keyboard support, and update `metadata` when appropriate.
+6) **Performance.** Respect animation budgets, lazy-load heavy features, avoid layout shift, and prefer dynamic imports for rare/large components.
+7) **Theming.** Only adjust brand colours via CSS variables in `app/globals.css`. Keep Tailwind mapping intact.
+8) **Email & env.** Never hardcode secrets. Update `.env.example` and README when changing integrations.
+9) **Consistency.** Follow naming, copy tone (professional, Canadian), and UI patterns already present.
+10) **Verification.** End with the Acceptance Checklist report and any manual test steps.
+
+==================================================
+RESPONSE FORMAT (MUST FOLLOW)
+==================================================
+**PLAN**
+- Bullet list of file changes and rationale (1–6 bullets max).
+
+**PATCHES**
+- Provide changes as **unified diffs** OR full-file replacements inside triple backticks.
+- Use one code block per file, titled with the relative path.
+- Keep diffs minimal and well-commented if non-obvious.
+
+**TESTS / MANUAL QA**
+- Brief instructions to verify behaviour (terminal commands + UI steps).
+
+**ACCEPTANCE CHECKLIST**
+- Copy the checklist below and tick what you verified.
+
+**NOTES**
+- Edge cases, follow-ups, or TODOs (if any).
+
+==================================================
+FILE MAP (KEY LOCATIONS)
+==================================================
+- `app/page.tsx` — section composition
+- `components/*` — UI sections (Hero, About, Footprint, Services, Values, Clients, CTA, ContactForm, Estimator)
+- `components/Estimator/*` — Estimator stepper UI
+- `lib/pricing.ts` — pricing tables, complexity/urgency, math helpers
+- `app/api/send-quote/route.ts` — instant quote email API (POST JSON)
+- `app/api/contact/route.ts` — contact email API (POST JSON)
+- `app/globals.css` — tokens, utilities
+- `tailwind.config.ts` — Tailwind brand mapping
+
+==================================================
+THEMING & TOKENS
+==================================================
+- Brand teal tokens live in `:root` as `--brand-50..900` (RGB triplets).
+- Tailwind maps them to `brand.{50..900}`; keep mapping intact.
+- To retheme: update RGB values only. Do not rename tokens.
+- Prefer Tailwind utilities. Add minimal CSS utilities only when needed.
+
+==================================================
+ESTIMATOR — SOURCE OF TRUTH & CONTRACT
+==================================================
+- Services (fixed keys):
+  - "Marketing"
+  - "Web & Digital Solutions"
+  - "Media & Branding"
+- Pricing & features: **only in** `lib/pricing.ts`:
+  - `BASE[service]`
+  - `FEATURES[service] = { key, label, unit, qty? }[]` (set `qty: true` if quantity input is required)
+  - `COMPLEXITY = [{ key, label, factor }]`
+  - `urgencyFactor(days)`
+  - `estimateTotal(service, items, complexityKey, daysUntil)`
+- Formula (do not change without explicit instruction):
+  `total = round( (base + Σ(feature_unit_cost × qty)) × complexity × urgency )`
+- Urgency from delivery date (days until): ≥14 → 1.00, 7–13 → 1.20, ≤6 → 1.40
+- UI updates must reflect line-item breakdown and show CAD totals, ±15% note.
+
+**Email Payload (must include):**
+```ts
+{
+  info: { name, email, company?, deliveryDate?, projectName },
+  selection: { service, complexity, daysUntil },
+  features: Record<string, number>,
+  estimate: { base, subtotal, complexity, urgency, total }
+}
+```
+- `POST /api/send-quote` and `/api/contact` return `{ ok: boolean, message?: string }`.
+
+==================================================
+MOTION & INTERACTION GUIDELINES
+==================================================
+- Use Framer Motion for reveals, step transitions, hover lifts.
+- Durations: 80–300ms; use spring with moderate stiffness for larger UI. Keep 60fps in mind.
+- Respect `prefers-reduced-motion` — provide a no-motion path for essential content.
+- Keep animations subtle: small translate/opacity/scale; avoid large parallax on mobile.
+
+==================================================
+ACCESSIBILITY & SEO
+==================================================
+- Landmarks: header, main, footer; proper headings hierarchy.
+- Forms: labelled inputs, validation hints, clear error/success messages, keyboard-friendly.
+- Interactive icons: `aria-label` or accessible text.
+- Metadata: update route `metadata` for new pages; OG tags where appropriate.
+
+==================================================
+PERFORMANCE BUDGETS
+==================================================
+- LCP ≤ 2.5s on mid-range hardware.
+- CLS ≤ 0.02; avoid layout jumps.
+- Hydration: keep critical UI small; dynamic import non-critical/rare components.
+- Images: use `next/image` with proper `sizes` when adding imagery.
+
+==================================================
+ACCEPTANCE CHECKLIST (COPY & FILL)
+==================================================
+- [ ] Build passes: `npm run build`
+- [ ] Types pass: `npm run typecheck`
+- [ ] No ESLint errors: `npm run lint`
+- [ ] Visual QA at 375 / 768 / 1280 px (no overflow/shift)
+- [ ] A11y basics (labels, keyboard nav, focus, aria)
+- [ ] Estimator math verified (one sample per service)
+- [ ] Email routes return `{ ok: true }` locally (mock SMTP allowed)
+- [ ] Theming intact (brand mapping still works)
+
+==================================================
+COMMON TASKS — HOW TO DO THEM
+==================================================
+1) **Add a homepage section**
+   - Create `components/NewSection.tsx` with Framer Motion reveals.
+   - Insert `<section id="new-section">` in `app/page.tsx` with spacing.
+   - Update header nav if needed.
+
+2) **Adjust brand palette**
+   - Edit `--brand-50..900` in `app/globals.css` (RGB only). Do not rename tokens.
+
+3) **Change pricing or add features**
+   - Edit `lib/pricing.ts` only. Set `qty: true` for quantity features.
+   - Verify totals with a manual sample and check the UI updates live.
+
+4) **Switch email provider (e.g., Resend)**
+   - Update both API routes, keep request/response shapes.
+   - Update `.env.example` and README with new env vars.
+   - Remove unused SMTP envs if fully migrating.
+
+5) **Add Case Studies page**
+   - Create `app/case-studies/page.tsx` and a `components/CaseCard.tsx`.
+   - Add route metadata; link from header/hero/clients.
+
+6) **Performance pass**
+   - Lazy-load heavy bits via `next/dynamic({ ssr: false })` when suitable.
+   - Convert images to `next/image` with proper `sizes` and `priority` only for hero.
+
+7) **Validation**
+   - Use zod or simple inline checks; surface friendly error text; keep optimistic UI pattern used in forms.
+
+==================================================
+CONVENTIONS & NAMING
+==================================================
+- Components: PascalCase. Props must be explicitly typed.
+- Helpers: `lib/*.ts` (pure functions).
+- Icons: `lucide-react` with accessible labels.
+- Copy tone: professional, concise, Canadian-friendly.
+
+==================================================
+EXAMPLE PROMPTS (PASTE INTO CURSOR CHAT)
+==================================================
+- “Add a **Case Studies** page with three cards and link it from the header. Follow the Response Format and Acceptance Checklist.”
+- “Change the brand palette to deeper teal: update only the `--brand-*` tokens in `app/globals.css`.”
+- “In the estimator, add a **‘UX research (per session)’** feature under **Media & Branding** at $180 with qty. Update `lib/pricing.ts` and UI accordingly.”
+- “Replace Nodemailer with **Resend** for both APIs but keep the same request/response shape. Update `.env.example` and README.”
+- “Make the Clients carousel pause on hover, support keyboard focus, and use `aria-live='polite'` for announcements.”
+- “Convert the dotted map in `Footprint` into an interactive SVG map with city tooltips.”
+- “Add unit tests for `estimateTotal` using Vitest; verify urgency and complexity multipliers.”
+
+==================================================
+DO NOT
+==================================================
+- Do not move or rename `lib/pricing.ts` keys without explicit approval.
+- Do not add heavyweight libs (3D/charting) without instruction.
+- Do not introduce global CSS frameworks or resets.
+- Do not degrade performance for decorative effects.
+
+==================================================
+DONE = DEFINITION
+==================================================
+- All Acceptance Checklist items are satisfied.
+- README and `.env.example` updated if behaviour or setup changed.
+- Diffs minimal, commented where non-obvious, and type-safe.

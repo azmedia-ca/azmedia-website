@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, LayoutGroup } from 'framer-motion'
 import { PhoneCall, Calculator, Menu, X } from 'lucide-react'
 
 const nav = [
@@ -16,6 +16,7 @@ const nav = [
 
 export function Header() {
   const [open, setOpen] = useState(false)
+  const [hovered, setHovered] = useState<string | null>(null)
 
   return (
     <header className="sticky top-0 z-50 bg-white/70 backdrop-blur border-b border-black/5">
@@ -25,11 +26,29 @@ export function Header() {
           AZ Media
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm">
-          {nav.map((n) => (
-            <a key={n.href} href={n.href} className="text-slate-700 hover:text-brand-700 transition">{n.label}</a>
-          ))}
-        </nav>
+        <LayoutGroup>
+          <nav
+            className="hidden md:flex items-center gap-2 text-sm"
+            onMouseLeave={() => setHovered(null)}
+          >
+            {nav.map((n) => (
+              <a
+                key={n.href}
+                href={n.href}
+                className="relative text-slate-700 hover:text-brand-700 rounded-xl px-3 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/30"
+                onMouseEnter={() => setHovered(n.href)}
+                onFocus={() => setHovered(n.href)}
+                onBlur={() => setHovered(null)}
+              >
+                {hovered === n.href && (
+                  <motion.span layoutId="navHover" className="absolute inset-0 rounded-xl bg-slate-100 pointer-events-none z-0"
+                    transition={{ type: 'spring', stiffness: 500, damping: 40, mass: 1 }} />
+                )}
+                <span className="relative z-10">{n.label}</span>
+              </a>
+            ))}
+          </nav>
+        </LayoutGroup>
 
         <div className="hidden md:flex items-center gap-3">
           <a href="#estimate" className="btn-ghost"><Calculator size={18} className="mr-2"/>Get a Quote</a>
@@ -51,7 +70,7 @@ export function Header() {
               <button className="btn-ghost" onClick={() => setOpen(false)}><X/></button>
             </div>
             {nav.map(n => (
-              <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="py-2 text-slate-800 hover:text-brand-700">{n.label}</a>
+              <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="px-3 py-2 text-slate-800 hover:text-brand-700 hover:bg-slate-100 rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/30">{n.label}</a>
             ))}
             <a href="#estimate" onClick={() => setOpen(false)} className="btn-ghost mt-2"><Calculator size={18} className="mr-2"/>Get a Quote</a>
             <a href="#contact" onClick={() => setOpen(false)} className="btn-primary"><PhoneCall size={18} className="mr-2"/>Book a Call</a>
