@@ -26,9 +26,9 @@ export function Header() {
           <Image
             src="/images/small_logo.png"
             alt="AZ Media"
-            width={28}
-            height={28}
-            className="h-7 w-7"
+            width={36}
+            height={36}
+            className="h-10 w-10"
           /> AZ Media
           <span className="sr-only">AZ Media</span>
         </Link>
