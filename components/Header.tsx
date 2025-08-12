@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import { motion, LayoutGroup } from 'framer-motion'
 import { PhoneCall, Calculator, Menu, X } from 'lucide-react'
@@ -21,9 +22,15 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/70 backdrop-blur border-b border-black/5">
       <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 font-bold">
-          <span className="inline-block h-6 w-6 rounded-md bg-brand-600" />
-          AZ Media 
+        <Link href="/" className="flex items-center gap-2" aria-label="AZ Media home">
+          <Image
+            src="/images/small_logo.png"
+            alt="AZ Media"
+            width={28}
+            height={28}
+            className="h-7 w-7"
+          /> AZ Media
+          <span className="sr-only">AZ Media</span>
         </Link>
 
         <LayoutGroup>
