@@ -7,6 +7,7 @@ import { Clients } from '@/components/Clients'
 import { Estimator } from '@/components/Estimator/Estimator'
 import { ContactForm } from '@/components/ContactForm'
 import { CTA } from '@/components/CTA'
+import { Features } from '@/components/Features'
 
 export default function HomePage() {
   return (
@@ -17,7 +18,14 @@ export default function HomePage() {
           <About />
         </div>
       </section>
-      <section id="footprint" className="py-24 bg-gradient-to-b from-white to-brand-50">
+      <section id="about" className="py-24">
+        <div className="container">
+          <Features />
+        </div>
+      </section>
+
+
+      <section id="footprint" className="py-24 ">
         <div className="container">
           <Footprint />
         </div>
