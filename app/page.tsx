@@ -35,7 +35,7 @@ export default function HomePage() {
           <Services />
         </div>
       </section>
-      <section id="values" className="py-24 bg-brand-50/60">
+      <section id="values" className="py-24 bg-white">
         <div className="container">
           <Values />
         </div>

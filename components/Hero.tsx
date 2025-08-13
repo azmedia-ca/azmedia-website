@@ -6,7 +6,7 @@ import { ThreeDMarqueeDemo } from './3dMarquee'
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-mesh">
+    <section id="home" className="relative overflow-hidden bg-mesh">
       <div className="absolute inset-0 noise" />
       <div className="container py-10 md:py-16 relative">
         <div className="grid items-center gap-10 lg:grid-cols-2">

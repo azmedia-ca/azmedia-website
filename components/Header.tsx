@@ -6,6 +6,7 @@ import { motion, LayoutGroup } from 'framer-motion'
 import { PhoneCall, Calculator, Menu, X } from 'lucide-react'
 
 const nav = [
+  { href: '#home', label: 'Home' },
   { href: '#about', label: 'About' },
   { href: '#footprint', label: 'Footprint' },
   { href: '#services', label: 'Services' },

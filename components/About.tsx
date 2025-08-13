@@ -1,5 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
+import { TimelineDemo } from './myTimeline'
 
 export function About() {
   const stats = [
@@ -30,22 +31,8 @@ export function About() {
           ))}
         </div>
       </div>
-      <div className="card p-6">
-        <ol className="relative border-s border-black/10 ps-6 space-y-6">
-          {[
-            {t:'Discover', d:'Define goals, constraints, and success metrics.'},
-            {t:'Design', d:'Iterate on concepts, prototypes, and motion.'},
-            {t:'Develop', d:'Build accessible, performant, SEO-friendly experiences.'},
-            {t:'Deliver', d:'Launch and optimize with analytics & A/B testing.'},
-          ].map((step,i)=>(
-            <li key={i}>
-              <div className="absolute -start-2 mt-1.5 h-3 w-3 rounded-full bg-brand-600" />
-              <div className="font-semibold">{step.t}</div>
-              <div className="text-sm text-slate-600">{step.d}</div>
-            </li>
-          ))}
-        </ol>
-      </div>
+      <TimelineDemo />
+      
     </div>
   )
 }
