@@ -10,11 +10,11 @@ export function Hero() {
       <div className="absolute inset-0 noise" />
       
       {/* Floating elements for premium feel */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-brand-100/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-40 h-40 bg-brand-200/30 rounded-full blur-3xl" />
+      <div className="absolute top-20 left-10 w-32 h-32 bg-brand-100/20 rounded-full blur-3xl hidden md:block" />
+      <div className="absolute bottom-20 right-10 w-40 h-40 bg-brand-200/30 rounded-full blur-3xl hidden md:block" />
       
       <div className="container py-16 md:py-24 relative">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+        <div className="grid items-center gap-8 lg:gap-12 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -46,10 +46,10 @@ export function Hero() {
               <NextImage
                 src="/images/small_logo.png"
                 alt="AZ Media - Calgary's Premier Digital Agency"
-                width={500}
-                height={500}
-                className="rounded-xl"
-                style={{ width: '25%', height: 'auto' }}
+                width={200}
+                height={200}
+                className="rounded-xl w-20 sm:w-24 md:w-28 lg:w-32 h-auto"
+                sizes="(max-width: 640px) 80px, (max-width: 768px) 96px, (max-width: 1024px) 112px, 128px"
               />
             </motion.div>
 
@@ -87,17 +87,17 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="grid grid-cols-3 gap-6 mb-8">
+              className="grid grid-cols-3 gap-4 md:gap-6 mb-8">
               <div className="text-center">
-                <div className="text-xl font-bold text-brand-600">320+</div>
+                <div className="text-lg md:text-xl font-bold text-brand-600">320+</div>
                 <div className="text-xs text-slate-600">Projects Delivered</div>
               </div>
               <div className="text-center">
-                <div className="text-xl font-bold text-brand-600">92%</div>
+                <div className="text-lg md:text-xl font-bold text-brand-600">92%</div>
                 <div className="text-xs text-slate-600">Client Retention</div>
               </div>
               <div className="text-center">
-                <div className="text-xl font-bold text-brand-600">10+</div>
+                <div className="text-lg md:text-xl font-bold text-brand-600">10+</div>
                 <div className="text-xs text-slate-600">Years Experience</div>
               </div>
             </motion.div>
@@ -144,7 +144,7 @@ export function Hero() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.2 }}
-              className="absolute -top-4 -right-4 bg-white/90 backdrop-blur rounded-2xl p-2 shadow-lg border border-brand-200/50">
+              className="absolute -top-4 -right-4 bg-white/90 backdrop-blur rounded-2xl p-2 shadow-lg border border-brand-200/50 hidden md:block">
               <div className="flex items-center gap-2 text-sm">
                 <Award animation="pulse" className="w-5 h-5 text-brand-600" />
                 <span className="font-medium">Award Winning</span>
@@ -155,7 +155,7 @@ export function Hero() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.4 }}
-              className="absolute -bottom-4 -left-4 bg-white/90 backdrop-blur rounded-2xl p-2  shadow-lg border border-brand-200/50">
+              className="absolute -bottom-4 -left-4 bg-white/90 backdrop-blur rounded-2xl p-2  shadow-lg border border-brand-200/50 hidden md:block">
               <div className="flex items-center gap-2 text-sm">
                 <TrendingUp animation="pulse" className="w-5 h-5 text-green-600" />
                 <span className="antialiased">ROI Focused</span>

@@ -13,42 +13,42 @@ export default function HomePage() {
   return (
     <main className="relative">
       <Hero />
-      <section id="about" className="py-24 bg-gradient-to-b from-white to-brand-50/30">
+      <section id="about" className="py-16 md:py-24 bg-gradient-to-b from-white to-brand-50/30">
         <div className="container">
           <About />
         </div>
       </section>
-      <section id="features" className="py-24 bg-gradient-to-b from-brand-50/30 to-white">
+      <section id="features" className="py-16 md:py-24 bg-gradient-to-b from-brand-50/30 to-white">
         <div className="container">
           <Features />
         </div>
       </section>
 
 
-      <section id="services" className="py-32 bg-gradient-to-br from-white via-brand-50/20 to-accent-violet/5 relative overflow-hidden">
+      <section id="services" className="py-20 md:py-32 bg-gradient-to-br from-white via-brand-50/20 to-accent-violet/5 relative overflow-hidden">
         <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-accent-rose/10 to-accent-amber/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-br from-accent-emerald/10 to-accent-cyan/10 rounded-full blur-3xl"></div>
         <div className="container relative z-10">
           <Services />
         </div>
       </section>
-      <section id="portfolio" className="py-32 bg-gradient-to-b from-white to-accent-emerald/5">
+      <section id="portfolio" className="py-20 md:py-32 bg-gradient-to-b from-white to-accent-emerald/5">
         <div className="container">
           <Portfolio />
         </div>
       </section>
-      <section id="values" className="py-32 bg-gradient-to-br from-accent-emerald/5 via-brand-50/40 to-accent-violet/5 relative overflow-hidden">
+      <section id="values" className="py-20 md:py-32 bg-gradient-to-br from-accent-emerald/5 via-brand-50/40 to-accent-violet/5 relative overflow-hidden">
         <div className="absolute -top-20 -right-20 w-96 h-96 bg-gradient-to-br from-brand-200/20 to-accent-violet/15 rounded-full blur-3xl"></div>
         <div className="container relative z-10">
           <Values />
         </div>
       </section>
-      <section id="clients" className="py-32 bg-gradient-to-b from-accent-violet/5 to-white">
+      <section id="clients" className="py-20 md:py-32 bg-gradient-to-b from-accent-violet/5 to-white">
         <div className="container">
           <Clients />
         </div>
       </section>
-      <section id="estimate" className="py-32 bg-gradient-to-br from-brand-50/60 via-accent-cyan/5 to-white relative overflow-hidden">
+      <section id="estimate" className="py-20 md:py-32 bg-gradient-to-br from-brand-50/60 via-accent-cyan/5 to-white relative overflow-hidden">
         <div className="absolute -top-20 -right-20 w-80 h-80 bg-gradient-to-br from-brand-300/20 to-accent-violet/15 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-gradient-to-br from-accent-emerald/15 to-accent-cyan/20 rounded-full blur-3xl"></div>
         <div className="container relative z-10">
@@ -74,7 +74,7 @@ export default function HomePage() {
         </div>
       </section>
       <CTA />
-      <section id="contact" className="py-32 bg-gradient-to-br from-brand-50/40 via-accent-violet/5 to-white relative overflow-hidden">
+      <section id="contact" className="py-20 md:py-32 bg-gradient-to-br from-brand-50/40 via-accent-violet/5 to-white relative overflow-hidden">
         <div className="absolute -top-20 -left-20 w-80 h-80 bg-gradient-to-br from-brand-200/20 to-accent-rose/15 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-10 -right-10 w-96 h-96 bg-gradient-to-br from-accent-violet/10 to-brand-300/15 rounded-full blur-3xl"></div>
         <div className="container relative z-10">
