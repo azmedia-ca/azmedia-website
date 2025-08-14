@@ -10,10 +10,10 @@ export function Hero() {
       <div className="absolute inset-0 noise" />
       
       {/* Floating elements for premium feel */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-brand-100/20 rounded-full blur-3xl hidden md:block" />
-      <div className="absolute bottom-20 right-10 w-40 h-40 bg-brand-200/30 rounded-full blur-3xl hidden md:block" />
+      <div className="absolute top-10 left-4 w-24 h-24 bg-brand-100/20 rounded-full blur-3xl hidden sm:block md:top-20 md:left-10 md:w-32 md:h-32" />
+      <div className="absolute bottom-10 right-4 w-28 h-28 bg-brand-200/30 rounded-full blur-3xl hidden sm:block md:bottom-20 md:right-10 md:w-40 md:h-40" />
       
-      <div className="container py-16 md:py-24 relative">
+      <div className="container py-12 sm:py-16 md:py-24 relative">
         <div className="grid items-center gap-8 lg:gap-12 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -58,7 +58,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-3xl md:text-5xl font-bold leading-tight mb-6">
+              className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6">
               Where Creativity Meets{' '}
               <span className="relative">
                 <span className="text-brand-600">Results</span>
@@ -76,7 +76,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-lg text-slate-600 leading-relaxed mb-8 max-w-2xl">
+              className="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 max-w-2xl">
               We're Calgary's premier digital agency, transforming ambitious brands through 
               <strong className="text-slate-800"> strategic design, cutting-edge development</strong>, and 
               <strong className="text-slate-800"> data-driven marketing</strong> that delivers measurable results.
@@ -87,7 +87,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="grid grid-cols-3 gap-4 md:gap-6 mb-8">
+              className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 mb-8">
               <div className="text-center">
                 <div className="text-lg md:text-xl font-bold text-brand-600">320+</div>
                 <div className="text-xs text-slate-600">Projects Delivered</div>
@@ -107,7 +107,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
-              className="flex flex-col sm:flex-row gap-4">
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a 
                 href="#estimate" 
                 className="group relative overflow-hidden bg-brand-600 hover:bg-brand-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-xl inline-flex items-center justify-center gap-2 text-sm">
@@ -133,7 +133,7 @@ export function Hero() {
             className="relative">
             
             {/* Premium decoration around 3D element */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-brand-400/20 via-transparent to-brand-600/20 rounded-3xl blur-2xl" />
+            <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-brand-400/20 via-transparent to-brand-600/20 rounded-3xl blur-xl sm:blur-2xl" />
             
             <div className="relative">
               <ThreeDMarqueeDemo />
@@ -144,7 +144,7 @@ export function Hero() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.2 }}
-              className="absolute -top-4 -right-4 bg-white/90 backdrop-blur rounded-2xl p-2 shadow-lg border border-brand-200/50 hidden md:block">
+              className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 bg-white/90 backdrop-blur rounded-2xl p-2 shadow-lg border border-brand-200/50 hidden md:block">
               <div className="flex items-center gap-2 text-sm">
                 <Award animation="pulse" className="w-5 h-5 text-brand-600" />
                 <span className="font-medium">Award Winning</span>
@@ -155,7 +155,7 @@ export function Hero() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.4 }}
-              className="absolute -bottom-4 -left-4 bg-white/90 backdrop-blur rounded-2xl p-2  shadow-lg border border-brand-200/50 hidden md:block">
+              className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 bg-white/90 backdrop-blur rounded-2xl p-2  shadow-lg border border-brand-200/50 hidden md:block">
               <div className="flex items-center gap-2 text-sm">
                 <TrendingUp animation="pulse" className="w-5 h-5 text-green-600" />
                 <span className="antialiased">ROI Focused</span>
