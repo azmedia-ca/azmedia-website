@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import { AnimatedIcon, Marketing, Development, Design, ArrowRight, CheckCircle } from '@/components/icons/AnimatedIcons'
+import { Marketing, Development, Design, ArrowRight, CheckCircle } from '@/components/icons/AnimatedIcons'
 import { Megaphone } from 'lucide-react'
 
 const services = [

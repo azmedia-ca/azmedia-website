@@ -3,7 +3,7 @@ import React, { useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Progress } from './Progress'
 import { FEATURES, BASE, COMPLEXITY, estimateTotal, type ServiceKey } from '@/lib/pricing'
-import { Check, Loader2 } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
 
 type Info = {
   name: string

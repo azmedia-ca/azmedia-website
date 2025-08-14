@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { TrendingUp, Users } from '@/components/icons/AnimatedIcons'
-import { ArrowUpRight, Calendar } from 'lucide-react'
+import { Calendar } from 'lucide-react'
 
 interface CaseStudy {
   id: string

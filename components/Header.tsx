@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
 import { motion, LayoutGroup } from 'framer-motion'
-import { AnimatedIcon, Phone, Calculator, Menu, X } from '@/components/icons/AnimatedIcons'
+import { Phone, Calculator, Menu, X } from '@/components/icons/AnimatedIcons'
 
 const nav = [
   { href: '#home', label: 'Home' },

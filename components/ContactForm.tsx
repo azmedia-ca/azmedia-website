@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import type { PropsWithChildren } from 'react'
 import { motion } from 'framer-motion'
 import { Loader2, MapPin, Mail, Phone, Clock, CheckCircle, Award } from 'lucide-react'
 
@@ -70,7 +71,7 @@ export function ContactForm() {
         <div className="mb-8">
           <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
           <div className="space-y-6">
-            {contactInfo.map((info, i) => {
+            {contactInfo.map((info) => {
               const IconComponent = info.icon
               return (
                 <div key={info.label} className="flex items-start gap-4">
@@ -253,7 +254,7 @@ export function ContactForm() {
   )
 }
 
-function Field({ children, label }: React.PropsWithChildren<{label:string}>) {
+function Field({ children, label }: PropsWithChildren<{label:string}>) {
   return (
     <div>
       <label className="block text-sm font-semibold text-slate-700 mb-2">{label}</label>
