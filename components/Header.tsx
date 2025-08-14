@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, LayoutGroup } from 'framer-motion'
 import { Phone, Calculator, Menu, X } from '@/components/icons/AnimatedIcons'
 
@@ -18,10 +18,28 @@ const nav = [
 export function Header() {
   const [open, setOpen] = useState(false)
   const [hovered, setHovered] = useState<string | null>(null)
+  const [compact, setCompact] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY || 0
+      setCompact(y > 140)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-brand-200/30 shadow-sm">
-      <div className="container flex h-18 items-center justify-between">
+    <>
+    <motion.header 
+      className="fixed top-0 left-0 right-0 z-[1000] bg-white/95 backdrop-blur-md"
+      initial={false}
+      animate={compact ? { backgroundColor: 'rgba(255,255,255,0.92)' } : { backgroundColor: 'rgba(255,255,255,0.95)' }}
+      transition={{ duration: 0.25 }}
+    >
+      <div className="container">
+        <div className={`flex items-center justify-between transition-all duration-300 ${compact ? 'h-14 rounded-2xl border border-brand-200/60 bg-white/90 shadow-md px-3 mt-2' : 'h-18 px-0'}`}>
         <Link href="/" className="flex items-center gap-3 group" aria-label="AZ Media home">
           <div className="relative">
             <Image
@@ -29,26 +47,26 @@ export function Header() {
               alt="AZ Media"
               width={40}
               height={40}
-              className="h-11 w-11 transition-transform duration-300 group-hover:scale-110"
+                className={`transition-transform duration-300 group-hover:scale-110 ${compact ? 'h-9 w-9' : 'h-11 w-11'}`}
             />
             <div className="absolute inset-0 bg-gradient-to-br from-brand-400/20 to-brand-600/20 rounded-lg blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
           </div>
-          <span className="text-xl font-bold bg-gradient-to-r from-brand-600 to-brand-500 bg-clip-text text-transparent">
-            AZ Media
-          </span>
-          <span className="sr-only">AZ Media</span>
+            <span className={`text-xl font-bold bg-gradient-to-r from-brand-600 to-brand-500 bg-clip-text text-transparent`}>
+              AZ Media
+            </span>
+            <span className="sr-only">AZ Media</span>
         </Link>
 
         <LayoutGroup>
           <nav
-            className="hidden md:flex items-center gap-1 text-sm"
+            className={`hidden md:flex items-center gap-1 text-sm transition-[gap] duration-300 ${compact ? 'gap-0.5' : 'gap-1'}`}
             onMouseLeave={() => setHovered(null)}
           >
             {nav.map((n) => (
               <a
                 key={n.href}
                 href={n.href}
-                className="relative text-slate-600 hover:text-brand-700 rounded-xl px-4 py-2.5 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300"
+                className={`relative text-slate-600 hover:text-brand-700 rounded-xl font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 ${compact ? 'px-3 py-2' : 'px-4 py-2.5'}`}
                 onMouseEnter={() => setHovered(n.href)}
                 onFocus={() => setHovered(n.href)}
                 onBlur={() => setHovered(null)}
@@ -80,6 +98,7 @@ export function Header() {
         <button onClick={() => setOpen(true)} className="md:hidden btn-ghost p-2">
           <Menu animation="pulse" size={20}/>
         </button>
+        </div>
       </div>
 
       {/* Mobile Sheet */}
@@ -87,7 +106,7 @@ export function Header() {
         <motion.div
           initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }}
           transition={{ type: 'spring', damping: 24, stiffness: 240 }}
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm md:hidden z-50">
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm md:hidden z-[1200]">
           <div className="ml-auto h-full w-80 bg-white/95 backdrop-blur-md p-6 flex flex-col gap-4 border-l border-brand-200/30">
             <div className="flex items-center justify-between pb-4 border-b border-brand-100">
               <div className="font-bold text-lg bg-gradient-to-r from-brand-600 to-brand-500 bg-clip-text text-transparent">
@@ -120,6 +139,9 @@ export function Header() {
           </div>
         </motion.div>
       )}
-    </header>
+    </motion.header>
+    {/* Spacer to offset fixed header height */}
+    <div aria-hidden className="w-full" style={{ height: compact ? 56 : 72 }} />
+    </>
   )
 }

@@ -48,7 +48,7 @@ export function Hero() {
                 alt="AZ Media - Calgary's Premier Digital Agency"
                 width={500}
                 height={500}
-                className="rounded-xl shadow-lg"
+                className="rounded-xl"
                 style={{ width: '25%', height: 'auto' }}
               />
             </motion.div>
@@ -144,7 +144,7 @@ export function Hero() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.2 }}
-              className="absolute -top-4 -right-4 bg-white/90 backdrop-blur rounded-2xl p-3 shadow-lg border border-brand-200/50">
+              className="absolute -top-4 -right-4 bg-white/90 backdrop-blur rounded-2xl p-2 shadow-lg border border-brand-200/50">
               <div className="flex items-center gap-2 text-sm">
                 <Award animation="pulse" className="w-5 h-5 text-brand-600" />
                 <span className="font-medium">Award Winning</span>
@@ -155,10 +155,10 @@ export function Hero() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.4 }}
-              className="absolute -bottom-4 -left-4 bg-white/90 backdrop-blur rounded-2xl p-3 shadow-lg border border-brand-200/50">
+              className="absolute -bottom-4 -left-4 bg-white/90 backdrop-blur rounded-2xl p-2  shadow-lg border border-brand-200/50">
               <div className="flex items-center gap-2 text-sm">
                 <TrendingUp animation="pulse" className="w-5 h-5 text-green-600" />
-                <span className="font-medium">ROI Focused</span>
+                <span className="antialiased">ROI Focused</span>
               </div>
             </motion.div>
           </motion.div>
