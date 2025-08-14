@@ -1,109 +1,104 @@
-import { cn } from "@/lib/utils";
-import {
-  IconAdjustmentsBolt,
-  IconCloud,
-  IconCurrencyDollar,
-  IconEaseInOut,
-  IconHeart,
-  IconHelp,
-  IconRouteAltLeft,
-  IconTerminal2,
-} from "@tabler/icons-react";
+'use client'
+import { motion } from 'framer-motion'
+import { Shield, Zap, Target, Award, Clock, HeadphonesIcon } from "lucide-react"
 
 export function Features() {
   const features = [
     {
-      title: "Built for developers",
-      description:
-        "Built for engineers, developers, dreamers, thinkers and doers.",
-      icon: <IconTerminal2 />,
+      title: "Premium Design Excellence",
+      description: "Award-winning creative that sets your brand apart and drives meaningful engagement.",
+      icon: <Award className="w-6 h-6" />,
     },
     {
-      title: "Ease of use",
-      description:
-        "It's as easy as using an Apple, and as expensive as buying one.",
-      icon: <IconEaseInOut />,
+      title: "Lightning-Fast Development",
+      description: "Cutting-edge technology stack ensuring blazing performance and seamless user experiences.",
+      icon: <Zap className="w-6 h-6" />,
     },
     {
-      title: "Pricing like no other",
-      description:
-        "Our prices are best in the market. No cap, no lock, no credit card required.",
-      icon: <IconCurrencyDollar />,
+      title: "Strategic ROI Focus",
+      description: "Every decision backed by data, every campaign optimized for maximum return on investment.",
+      icon: <Target className="w-6 h-6" />,
     },
     {
-      title: "100% Uptime guarantee",
-      description: "We just cannot be taken down by anyone.",
-      icon: <IconCloud />,
+      title: "Enterprise-Grade Security",
+      description: "Bank-level security protocols protecting your data and your customers' privacy.",
+      icon: <Shield className="w-6 h-6" />,
     },
     {
-      title: "Multi-tenant Architecture",
-      description: "You can simply share passwords instead of buying new seats",
-      icon: <IconRouteAltLeft />,
+      title: "Rapid Delivery Promise",
+      description: "Focused sprints and agile methodology ensuring your projects launch on time, every time.",
+      icon: <Clock className="w-6 h-6" />,
     },
     {
-      title: "24/7 Customer Support",
-      description:
-        "We are available a 100% of the time. Atleast our AI Agents are.",
-      icon: <IconHelp />,
-    },
-    {
-      title: "Money back guarantee",
-      description:
-        "If you donot like EveryAI, we will convince you to like us.",
-      icon: <IconAdjustmentsBolt />,
-    },
-    {
-      title: "And everything else",
-      description: "I just ran out of copy ideas. Accept my sincere apologies",
-      icon: <IconHeart />,
+      title: "White-Glove Support",
+      description: "Dedicated account management and 24/7 technical support when you need it most.",
+      icon: <HeadphonesIcon className="w-6 h-6" />,
     },
   ];
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10 py-10 max-w-7xl mx-auto">
-      {features.map((feature, index) => (
-        <Feature key={feature.title} {...feature} index={index} />
-      ))}
+    <div className="relative">
+      {/* Section header */}
+      <div className="text-center mb-16">
+        <div className="inline-flex items-center gap-2 bg-brand-100 text-brand-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+          <Award className="w-4 h-4" />
+          Why Choose AZ Media
+        </div>
+        <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          Premium Features That 
+          <span className="block text-brand-600">Drive Real Results</span>
+        </h2>
+        <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          We don't just build websites and campaigns—we engineer digital experiences that 
+          transform your business and exceed your goals.
+        </p>
+      </div>
+
+      {/* Features grid */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {features.map((feature, index) => (
+          <motion.div
+            key={feature.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            className="group relative"
+          >
+            <div className="card p-8 h-full hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 overflow-hidden">
+              {/* Gradient overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              {/* Icon */}
+              <div className="relative z-10 inline-flex items-center justify-center w-16 h-16 bg-brand-100 group-hover:bg-brand-200 rounded-2xl mb-6 transition-all duration-300">
+                <div className="text-brand-600 group-hover:scale-110 transition-transform duration-300">
+                  {feature.icon}
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-brand-700 transition-colors">
+                  {feature.title}
+                </h3>
+                <p className="text-slate-600 leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
+
+              {/* Subtle border accent */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-400 to-brand-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+            </div>
+
+            {/* Glow effect */}
+            <div className="absolute inset-0 bg-brand-400/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Background decorations */}
+      <div className="absolute top-10 right-10 w-32 h-32 bg-brand-100/20 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-10 left-10 w-40 h-40 bg-brand-200/20 rounded-full blur-3xl -z-10" />
     </div>
   );
 }
-
-const Feature = ({
-  title,
-  description,
-  icon,
-  index,
-}: {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  index: number;
-}) => {
-  return (
-    <div
-      className={cn(
-        "flex flex-col lg:border-r  py-10 relative group/feature dark:border-neutral-800",
-        (index === 0 || index === 4) && "lg:border-l dark:border-neutral-800",
-        index < 4 && "lg:border-b dark:border-neutral-800"
-      )}
-    >
-      {index < 4 && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
-      )}
-      {index >= 4 && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
-      )}
-      <div className="mb-4 relative z-10 px-10 text-neutral-600 dark:text-neutral-400">
-        {icon}
-      </div>
-      <div className="text-lg font-bold mb-2 relative z-10 px-10">
-        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-neutral-300 dark:bg-neutral-700 group-hover/feature:bg-blue-500 transition-all duration-200 origin-center" />
-        <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-neutral-800 dark:text-neutral-100">
-          {title}
-        </span>
-      </div>
-      <p className="text-sm text-neutral-600 dark:text-neutral-300 max-w-xs relative z-10 px-10">
-        {description}
-      </p>
-    </div>
-  );
-};
