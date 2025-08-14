@@ -21,6 +21,13 @@ const config: Config = {
   				'800': 'rgb(var(--brand-800) / <alpha-value>)',
   				'900': 'rgb(var(--brand-900) / <alpha-value>)'
   			},
+  			accent: {
+  				emerald: 'rgb(var(--accent-emerald) / <alpha-value>)',
+  				violet: 'rgb(var(--accent-violet) / <alpha-value>)',
+  				rose: 'rgb(var(--accent-rose) / <alpha-value>)',
+  				amber: 'rgb(var(--accent-amber) / <alpha-value>)',
+  				cyan: 'rgb(var(--accent-cyan) / <alpha-value>)'
+  			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

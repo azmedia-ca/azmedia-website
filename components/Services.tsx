@@ -14,10 +14,11 @@ const services = [
       { name: 'Paid Advertising', highlight: true },
       { name: 'SEO & Analytics', highlight: false }
     ],
-    color: 'from-blue-500 to-cyan-500',
-    bgColor: 'from-blue-50 to-cyan-50',
-    featured: false,
-    price: 'From $2,500/mo'
+    gradientFrom: 'from-accent-rose',
+    gradientTo: 'to-accent-amber',
+    bgGradient: 'from-rose-50 to-orange-50',
+    iconBg: 'bg-gradient-to-br from-rose-500 to-orange-500',
+    accentColor: 'text-rose-600'
   },
   {
     icon: MonitorSmartphone,
@@ -30,10 +31,11 @@ const services = [
       { name: 'Performance Optimization', highlight: false },
       { name: 'Mobile-First Design', highlight: false }
     ],
-    color: 'from-emerald-500 to-teal-500',
-    bgColor: 'from-emerald-50 to-teal-50',
-    featured: true,
-    price: 'From $5,000'
+    gradientFrom: 'from-accent-emerald',
+    gradientTo: 'to-accent-cyan',
+    bgGradient: 'from-emerald-50 to-cyan-50',
+    iconBg: 'bg-gradient-to-br from-emerald-500 to-cyan-500',
+    accentColor: 'text-emerald-600'
   },
   {
     icon: Palette,
@@ -46,109 +48,103 @@ const services = [
       { name: 'Marketing Materials', highlight: false },
       { name: 'Brand Guidelines', highlight: true }
     ],
-    color: 'from-violet-500 to-purple-500',
-    bgColor: 'from-violet-50 to-purple-50',
-    featured: false,
-    price: 'From $3,000'
+    gradientFrom: 'from-accent-violet',
+    gradientTo: 'to-brand-500',
+    bgGradient: 'from-violet-50 to-indigo-50',
+    iconBg: 'bg-gradient-to-br from-violet-500 to-indigo-500',
+    accentColor: 'text-violet-600'
   }
 ]
 
 export function Services() {
   return (
     <div className="relative">
-      {/* Background decoration */}
-      <div className="absolute -top-20 -left-20 w-64 h-64 bg-brand-100/20 rounded-full blur-3xl -z-10" />
       
       {/* Section header */}
-      <div className="text-center mb-16">
-        <div className="inline-flex items-center gap-2 bg-brand-100 text-brand-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
-          <Megaphone className="w-4 h-4" />
+      <div className="text-center mb-20">
+        <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-100 to-brand-50 text-brand-700 px-6 py-3 rounded-full text-sm font-semibold mb-8 shadow-sm">
+          <Megaphone className="w-4 h-4 text-brand-600" />
           Our Services
         </div>
-        <h2 className="text-4xl md:text-5xl font-bold mb-6">
-          Full-Service Digital 
-          <span className="block text-brand-600">Excellence</span>
+        <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+          Full-Service Digital{' '}
+          <span className="block bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent">
+            Excellence
+          </span>
         </h2>
-        <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+        <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
           From strategic marketing to cutting-edge development, we provide comprehensive 
-          digital solutions that drive measurable business growth.
+          digital solutions that drive <strong className="text-brand-600">measurable business growth</strong>.
         </p>
       </div>
 
       {/* Services grid */}
-      <div className="grid lg:grid-cols-3 gap-8">
+      <div className="grid lg:grid-cols-3 gap-10">
         {services.map((service, i) => {
           const IconComponent = service.icon
           return (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
+              transition={{ delay: i * 0.2, duration: 0.6, ease: "easeOut" }}
               className="group relative">
               
-              {/* Featured badge */}
-              {service.featured && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
-                  <div className="bg-brand-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                    Most Popular
-                  </div>
-                </div>
-              )}
-
-              <div className={`card overflow-hidden h-full transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-3 ${
-                service.featured ? 'ring-2 ring-brand-200 shadow-xl' : ''
-              }`}>
+              <div className="card-premium overflow-hidden h-full transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 flex flex-col">
                 
-                {/* Gradient header */}
-                <div className={`bg-gradient-to-r ${service.bgColor} p-8 relative overflow-hidden`}>
+                {/* Header */}
+                <div className={`bg-gradient-to-br ${service.bgGradient} p-8 relative overflow-hidden`}>
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
                   <div className="relative z-10">
-                    <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl mb-4 text-white`}>
+                    <div className={`inline-flex items-center justify-center w-16 h-16 ${service.iconBg} rounded-2xl mb-6 text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                       <IconComponent className="w-8 h-8" />
                     </div>
-                    <h3 className="text-2xl font-bold mb-2 text-slate-900">{service.title}</h3>
-                    <p className="text-slate-700 leading-relaxed">{service.desc}</p>
+                    <h3 className="text-2xl font-bold mb-3 text-slate-900">{service.title}</h3>
+                    <p className="text-slate-600 leading-relaxed">{service.desc}</p>
                   </div>
-                  
-                  {/* Floating elements */}
-                  <div className="absolute top-4 right-4 w-16 h-16 bg-white/20 rounded-full blur-xl" />
-                  <div className="absolute bottom-4 right-8 w-8 h-8 bg-white/30 rounded-full blur-lg" />
                 </div>
 
                 {/* Service details */}
-                <div className="p-8">
-                  <div className="space-y-3 mb-8">
+                <div className="p-8 flex-1 flex flex-col">
+                  <div className="space-y-4 flex-1">
                     {service.points.map((point, idx) => (
-                      <div key={idx} className="flex items-center gap-3">
-                        <CheckCircle className={`w-5 h-5 flex-shrink-0 ${
-                          point.highlight ? 'text-brand-600' : 'text-slate-400'
+                      <motion.div 
+                        key={idx} 
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.2 + idx * 0.1 }}
+                        className="flex items-center gap-3"
+                      >
+                        <CheckCircle className={`w-5 h-5 flex-shrink-0 transition-colors ${
+                          point.highlight 
+                            ? `${service.accentColor}` 
+                            : 'text-slate-400'
                         }`} />
-                        <span className={point.highlight ? 'font-medium text-slate-900' : 'text-slate-600'}>
+                        <span className={point.highlight 
+                          ? 'font-semibold text-slate-900' 
+                          : 'text-slate-600'
+                        }>
                           {point.name}
                         </span>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
 
-                  {/* Pricing and CTA */}
-                  <div className="flex items-center justify-between">
-                    <div className="text-2xl font-bold text-slate-900">{service.price}</div>
+                  {/* CTA */}
+                  <div className="mt-8">
                     <a
                       href="#estimate"
-                      className="group/cta inline-flex items-center gap-2 bg-slate-900 hover:bg-brand-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105">
+                      className={`group/cta inline-flex items-center gap-2 bg-gradient-to-r ${service.gradientFrom} ${service.gradientTo} hover:shadow-lg text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 w-full justify-center hover:scale-105`}>
                       Get Started
                       <ArrowRight className="w-4 h-4 group-hover/cta:translate-x-1 transition-transform" />
                     </a>
                   </div>
                 </div>
 
-                {/* Bottom gradient accent */}
-                <div className={`h-1 bg-gradient-to-r ${service.color}`} />
               </div>
 
-              {/* Glow effect */}
-              <div className={`absolute inset-0 bg-gradient-to-r ${service.color} opacity-0 group-hover:opacity-10 rounded-2xl blur-xl transition-opacity duration-500 -z-10`} />
             </motion.div>
           )
         })}
@@ -156,22 +152,29 @@ export function Services() {
 
       {/* CTA section */}
       <motion.div 
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mt-16">
-        <div className="card p-8 bg-gradient-to-r from-brand-50 to-brand-100/50">
-          <h3 className="text-2xl font-bold mb-4">Need a Custom Solution?</h3>
-          <p className="text-slate-600 mb-6 max-w-2xl mx-auto">
-            Every business is unique. Let's discuss how we can create a tailored digital strategy 
-            that perfectly fits your goals and budget.
-          </p>
-          <a 
-            href="#contact"
-            className="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg">
-            Schedule a Consultation
-            <ArrowRight className="w-5 h-5" />
-          </a>
+        transition={{ duration: 0.6 }}
+        className="text-center mt-20">
+        <div className="card-premium p-10 bg-gradient-to-br from-brand-50 via-white to-brand-100/30 relative overflow-hidden">
+          <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-brand-200/30 to-brand-300/20 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-gradient-to-br from-brand-300/20 to-brand-200/30 rounded-full blur-3xl"></div>
+          <div className="relative z-10">
+            <h3 className="text-3xl font-bold mb-4">
+              Need a <span className="bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent">Custom Solution?</span>
+            </h3>
+            <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+              Every business is unique. Let's discuss how we can create a tailored digital strategy 
+              that perfectly fits your <strong className="text-brand-600">goals and budget</strong>.
+            </p>
+            <a 
+              href="#contact"
+              className="btn-primary text-lg px-10 py-4">
+              Schedule a Consultation
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </a>
+          </div>
         </div>
       </motion.div>
     </div>

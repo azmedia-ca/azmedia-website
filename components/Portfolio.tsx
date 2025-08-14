@@ -111,18 +111,20 @@ export function Portfolio() {
 
   return (
     <div>
-      <div className="text-center mb-16">
-        <div className="inline-flex items-center gap-2 bg-brand-100 text-brand-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
-          <TrendingUp className="w-4 h-4" />
+      <div className="text-center mb-20">
+        <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-100 to-brand-50 text-brand-800 px-6 py-3 rounded-full text-sm font-semibold mb-8 shadow-sm">
+          <TrendingUp className="w-4 h-4 text-brand-600" />
           Portfolio & Results
         </div>
-        <h2 className="text-4xl md:text-5xl font-bold mb-6">
-          Proven Success Stories
-          <span className="block text-brand-600">That Deliver Results</span>
+        <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+          Proven Success Stories{' '}
+          <span className="block bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent">
+            That Deliver Results
+          </span>
         </h2>
-        <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+        <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
           Real projects, real results. See how we've transformed Calgary businesses with strategic 
-          digital solutions that drive measurable growth and ROI.
+          digital solutions that drive <strong className="text-brand-600">measurable growth and ROI</strong>.
         </p>
       </div>
 
@@ -154,10 +156,10 @@ export function Portfolio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="group cursor-pointer"
+            className="group cursor-pointer h-full"
             onClick={() => setSelectedCase(study)}
           >
-            <div className="card overflow-hidden hover:-translate-y-3 hover:shadow-2xl transition-all duration-500 group-hover:ring-2 group-hover:ring-brand-200">
+            <div className="card overflow-hidden hover:-translate-y-3 hover:shadow-2xl transition-all duration-500 group-hover:ring-2 group-hover:ring-brand-200 h-full flex flex-col">
               {/* Enhanced image with better placeholder */}
               <div className="h-56 bg-gradient-to-br from-brand-100 via-brand-50 to-brand-200 relative overflow-hidden">
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
@@ -176,19 +178,15 @@ export function Portfolio() {
                   </span>
                 </div>
                 
-                {/* Enhanced CTA */}
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="flex items-center justify-between bg-white/95 backdrop-blur rounded-xl p-3 shadow-sm">
-                    <div className="flex items-center gap-2 text-brand-700 font-medium">
-                      <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                      <span>View Case Study</span>
-                    </div>
-                    <div className="text-xs text-slate-600">{study.duration}</div>
+                {/* Duration badge */}
+                <div className="absolute bottom-4 right-4">
+                  <div className="bg-white/95 backdrop-blur rounded-xl p-2 shadow-sm">
+                    <div className="text-xs text-slate-600 font-medium">{study.duration}</div>
                   </div>
                 </div>
               </div>
 
-              <div className="p-8">
+              <div className="p-8 flex-1 flex flex-col">
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <h3 className="font-bold text-xl mb-2 group-hover:text-brand-700 transition-colors">{study.title}</h3>
@@ -200,7 +198,7 @@ export function Portfolio() {
                   </div>
                 </div>
                 
-                <p className="text-slate-600 mb-6 line-clamp-2 leading-relaxed">{study.description}</p>
+                <p className="text-slate-600 mb-6 line-clamp-2 leading-relaxed flex-1">{study.description}</p>
                 
                 {/* Enhanced Results Preview */}
                 <div className="grid grid-cols-3 gap-4 mb-4">

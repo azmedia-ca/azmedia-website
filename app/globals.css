@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Brand color variables from Tailwind teal (default values) */
+/* Modern vibrant color scheme for premium digital agency - Green Teal Brand */
 :root {
+  /* Primary Brand Colors - Green Teal matching logo */
   --brand-50: 240 253 250;
   --brand-100: 204 251 241;
   --brand-200: 153 246 228;
@@ -15,9 +16,18 @@
   --brand-800: 17 94 89;
   --brand-900: 19 78 74;
 
-  --bg: 248 250 252;
+  /* Accent Colors - Complementing Green Teal */
+  --accent-emerald: 16 185 129;
+  --accent-violet: 124 58 237;
+  --accent-rose: 236 72 153;
+  --accent-amber: 245 158 11;
+  --accent-cyan: 8 145 178;
+  
+  /* Background & Text */
+  --bg: 255 255 255;
+  --bg-secondary: 248 250 252;
   --fg: 15 23 42;
-  --muted: 100 116 139;
+  --fg-muted: 100 116 139;
 }
 
 html, body {
@@ -25,6 +35,26 @@ html, body {
   scroll-behavior: smooth;
   background-color: rgb(var(--bg));
   color: rgb(var(--fg));
+  font-feature-settings: 'rlig' 1, 'calt' 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Enhanced Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+
+p {
+  line-height: 1.7;
+  color: rgb(var(--fg-muted));
 }
 
 .container {
@@ -42,23 +72,43 @@ html, body {
 }
 
 .card {
-  @apply rounded-2xl shadow-card bg-white/90 backdrop-blur border border-white/20;
+  @apply rounded-2xl border border-slate-200/60 bg-white/80 backdrop-blur-sm hover:border-brand-200/60 transition-all duration-300;
+}
+
+.card-premium {
+  @apply card bg-gradient-to-br from-white via-white to-brand-50/30 shadow-lg hover:shadow-xl border-brand-200/30;
 }
 
 .btn {
-  @apply inline-flex items-center justify-center rounded-xl px-4 py-2 font-medium transition;
+  @apply inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold transition-all duration-300 transform;
 }
 
 .btn-primary {
-  @apply btn bg-brand-600 text-white hover:bg-brand-700 shadow-lg shadow-brand-600/30 hover:shadow-xl hover:shadow-brand-700/30 transition-all duration-300;
+  @apply btn bg-gradient-to-r from-brand-500 to-brand-600 text-white hover:from-brand-600 hover:to-brand-700 hover:scale-105 shadow-lg hover:shadow-xl;
+}
+
+.btn-secondary {
+  @apply btn bg-gradient-to-r from-emerald-500 to-cyan-500 text-white hover:from-emerald-600 hover:to-cyan-600 hover:scale-105 shadow-lg hover:shadow-xl;
 }
 
 .btn-ghost {
-  @apply btn bg-transparent hover:bg-black/5 border border-slate-200 hover:border-brand-200 hover:text-brand-700 transition-all duration-300;
+  @apply btn bg-white/80 backdrop-blur border border-brand-200/50 hover:border-brand-300 text-brand-700 hover:text-brand-800 hover:bg-white hover:scale-105 shadow-sm hover:shadow-md transition-all duration-300;
+}
+
+.btn-accent-rose {
+  @apply btn bg-gradient-to-r from-rose-500 to-pink-500 text-white hover:from-rose-600 hover:to-pink-600 hover:scale-105 shadow-lg hover:shadow-xl;
+}
+
+.btn-accent-emerald {
+  @apply btn bg-gradient-to-r from-emerald-500 to-teal-500 text-white hover:from-emerald-600 hover:to-teal-600 hover:scale-105 shadow-lg hover:shadow-xl;
+}
+
+.btn-accent-violet {
+  @apply btn bg-gradient-to-r from-violet-500 to-purple-500 text-white hover:from-violet-600 hover:to-purple-600 hover:scale-105 shadow-lg hover:shadow-xl;
 }
 
 .input {
-  @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-3 outline-none focus:ring-2 focus:ring-brand-400 focus:border-brand-400 transition-all duration-300 placeholder:text-slate-400 hover:border-slate-300;
+  @apply w-full rounded-md border border-gray-200 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-colors duration-200 placeholder:text-gray-400 hover:border-gray-300;
 }
 
 .label {
@@ -85,9 +135,16 @@ html, body {
 
 /* Animated gradient background */
 .animated-gradient {
-  background: linear-gradient(270deg, #00c6ff, #0072ff);
+  background: linear-gradient(270deg, rgb(var(--brand-400)), rgb(var(--accent-violet)), rgb(var(--accent-cyan)));
   background-size: 400% 400%;
-  animation: gradientAnimation 15s ease infinite;
+  animation: gradientAnimation 8s ease infinite;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, rgb(var(--brand-500)), rgb(var(--accent-violet)), rgb(var(--accent-cyan)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Premium glass effect */
@@ -95,17 +152,31 @@ html, body {
   @apply bg-white/10 backdrop-blur-lg border border-white/20;
 }
 
-/* Premium shadow utilities */
+/* Enhanced shadow utilities */
 .shadow-card {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
 }
 
 .shadow-premium {
-  box-shadow: 
-    0 25px 50px -12px rgba(0, 0, 0, 0.25),
-    0 0 0 1px rgba(255, 255, 255, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
+
+.shadow-brand {
+  box-shadow: 0 10px 25px -5px rgba(var(--brand-500), 0.2), 0 10px 10px -5px rgba(var(--brand-500), 0.1);
+}
+
+/* Accent color utilities */
+.bg-accent-emerald { background-color: rgb(var(--accent-emerald)); }
+.bg-accent-violet { background-color: rgb(var(--accent-violet)); }
+.bg-accent-rose { background-color: rgb(var(--accent-rose)); }
+.bg-accent-amber { background-color: rgb(var(--accent-amber)); }
+.bg-accent-cyan { background-color: rgb(var(--accent-cyan)); }
+
+.text-accent-emerald { color: rgb(var(--accent-emerald)); }
+.text-accent-violet { color: rgb(var(--accent-violet)); }
+.text-accent-rose { color: rgb(var(--accent-rose)); }
+.text-accent-amber { color: rgb(var(--accent-amber)); }
+.text-accent-cyan { color: rgb(var(--accent-cyan)); }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
@@ -117,23 +188,23 @@ html, body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(var(--brand-300));
+  background: #d4d4d8;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(var(--brand-400));
+  background: #a1a1aa;
 }
 
-/* Smooth focus transitions */
+/* Clean focus transitions */
 *:focus-visible {
-  @apply outline-none ring-2 ring-brand-400 ring-offset-2 ring-offset-white transition-all duration-300;
+  @apply outline-none ring-2 ring-gray-200 ring-offset-2 ring-offset-white transition-colors duration-200;
 }
 
-/* Premium text selection */
+/* Clean text selection */
 ::selection {
-  background-color: rgb(var(--brand-200));
-  color: rgb(var(--brand-900));
+  background-color: #f4f4f5;
+  color: #18181b;
 }
 
 /* Enhanced line clamping */
