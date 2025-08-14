@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
 import { motion, LayoutGroup } from 'framer-motion'
-import { PhoneCall, Calculator, Menu, X } from 'lucide-react'
+import { AnimatedIcon, Phone, Calculator, Menu, X } from '@/components/icons/AnimatedIcons'
 
 const nav = [
   { href: '#home', label: 'Home' },
@@ -68,17 +68,17 @@ export function Header() {
 
         <div className="hidden md:flex items-center gap-3">
           <a href="#estimate" className="btn-ghost text-sm">
-            <Calculator size={16} className="mr-2"/>
+            <Calculator animation="pulse" size={16} className="mr-2"/>
             Get a Quote
           </a>
           <a href="#contact" className="btn-primary text-sm">
-            <PhoneCall size={16} className="mr-2"/>
+            <Phone animation="pulse" size={16} className="mr-2"/>
             Book a Call
           </a>
         </div>
 
         <button onClick={() => setOpen(true)} className="md:hidden btn-ghost p-2">
-          <Menu size={20}/>
+          <Menu animation="pulse" size={20}/>
         </button>
       </div>
 
@@ -94,7 +94,7 @@ export function Header() {
                 AZ Media
               </div>
               <button className="btn-ghost p-2" onClick={() => setOpen(false)}>
-                <X size={20}/>
+                <X animation="pulse" size={20}/>
               </button>
             </div>
             {nav.map(n => (
@@ -109,10 +109,12 @@ export function Header() {
             ))}
             <div className="mt-4 pt-4 border-t border-brand-100 space-y-3">
               <a href="#estimate" onClick={() => setOpen(false)} className="btn-ghost w-full justify-start">
-                <Calculator size={18} className="mr-3"/>Get a Quote
+                <Calculator animation="pulse" size={18} className="mr-3"/>
+                Get a Quote
               </a>
               <a href="#contact" onClick={() => setOpen(false)} className="btn-primary w-full justify-start">
-                <PhoneCall size={18} className="mr-3"/>Book a Call
+                <Phone animation="pulse" size={18} className="mr-3"/>
+                Book a Call
               </a>
             </div>
           </div>

@@ -48,9 +48,9 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
 }
 
-h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
-h2 { font-size: clamp(2rem, 4vw, 3rem); }
-h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h1 { font-size: clamp(2rem, 4vw, 3.25rem); }
+h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
 
 p {
   line-height: 1.7;
@@ -72,7 +72,26 @@ p {
 }
 
 .card {
-  @apply rounded-2xl border border-slate-200/60 bg-white/80 backdrop-blur-sm hover:border-brand-200/60 transition-all duration-300;
+  @apply rounded-2xl border border-slate-200/60 bg-white/80 backdrop-blur-sm relative overflow-hidden transition-all duration-300;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent, rgba(var(--brand-400), 0.1), rgba(255, 255, 255, 0.2), rgba(var(--brand-400), 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:hover {
+  @apply border-brand-300/80 shadow-lg;
+  box-shadow: 0 0 0 1px rgba(var(--brand-400), 0.3), 0 4px 20px rgba(var(--brand-400), 0.1);
 }
 
 .card-premium {
@@ -80,31 +99,54 @@ p {
 }
 
 .btn {
-  @apply inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold transition-all duration-300 transform;
+  @apply inline-flex items-center justify-center rounded-xl px-4 py-1.5 font-semibold transition-all duration-300 transform text-sm relative overflow-hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent, rgba(var(--brand-400), 0.15), rgba(255, 255, 255, 0.3), rgba(var(--brand-400), 0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.btn:hover::before {
+  opacity: 1;
 }
 
 .btn-primary {
-  @apply btn bg-gradient-to-r from-brand-500 to-brand-600 text-white hover:from-brand-600 hover:to-brand-700 hover:scale-105 shadow-lg hover:shadow-xl;
+  @apply btn bg-gradient-to-r from-brand-500 to-brand-600 text-white hover:from-brand-600 hover:to-brand-700 shadow-lg hover:shadow-xl;
+  border: 1px solid rgba(var(--brand-400), 0.3);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 0 1px rgba(var(--brand-400), 0.5), 0 4px 20px rgba(var(--brand-400), 0.3);
 }
 
 .btn-secondary {
-  @apply btn bg-gradient-to-r from-emerald-500 to-cyan-500 text-white hover:from-emerald-600 hover:to-cyan-600 hover:scale-105 shadow-lg hover:shadow-xl;
+  @apply btn bg-gradient-to-r from-emerald-500 to-cyan-500 text-white hover:from-emerald-600 hover:to-cyan-600 shadow-lg hover:shadow-xl;
 }
 
 .btn-ghost {
-  @apply btn bg-white/80 backdrop-blur border border-brand-200/50 hover:border-brand-300 text-brand-700 hover:text-brand-800 hover:bg-white hover:scale-105 shadow-sm hover:shadow-md transition-all duration-300;
+  @apply btn bg-white/80 backdrop-blur border border-brand-200/50 hover:border-brand-300 text-brand-700 hover:text-brand-800 hover:bg-white shadow-sm hover:shadow-md transition-all duration-300;
+}
+
+.btn-ghost:hover {
+  box-shadow: 0 0 0 1px rgba(var(--brand-400), 0.3), 0 2px 10px rgba(var(--brand-400), 0.1);
 }
 
 .btn-accent-rose {
-  @apply btn bg-gradient-to-r from-rose-500 to-pink-500 text-white hover:from-rose-600 hover:to-pink-600 hover:scale-105 shadow-lg hover:shadow-xl;
+  @apply btn bg-gradient-to-r from-rose-500 to-pink-500 text-white hover:from-rose-600 hover:to-pink-600  shadow-lg hover:shadow-xl;
 }
 
 .btn-accent-emerald {
-  @apply btn bg-gradient-to-r from-emerald-500 to-teal-500 text-white hover:from-emerald-600 hover:to-teal-600 hover:scale-105 shadow-lg hover:shadow-xl;
+  @apply btn bg-gradient-to-r from-emerald-500 to-teal-500 text-white hover:from-emerald-600 hover:to-teal-600  shadow-lg hover:shadow-xl;
 }
 
 .btn-accent-violet {
-  @apply btn bg-gradient-to-r from-violet-500 to-purple-500 text-white hover:from-violet-600 hover:to-purple-600 hover:scale-105 shadow-lg hover:shadow-xl;
+  @apply btn bg-gradient-to-r from-violet-500 to-purple-500 text-white hover:from-violet-600 hover:to-purple-600  shadow-lg hover:shadow-xl;
 }
 
 .input {

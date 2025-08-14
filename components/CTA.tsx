@@ -1,6 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
-import { ArrowRight, Sparkles, Award, Clock } from 'lucide-react'
+import { ArrowRight, Sparkles, Award } from '@/components/icons/AnimatedIcons'
+import { Clock } from 'lucide-react'
 
 export function CTA() {
   return (
@@ -23,18 +24,18 @@ export function CTA() {
           
           {/* Premium badge */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 rounded-full px-6 py-3 mb-8">
-            <Sparkles className="w-5 h-5 text-yellow-400" />
+            <Sparkles animation="pulse" className="w-5 h-5 text-yellow-400" />
             <span className="text-white font-medium">Ready to Transform Your Business?</span>
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Let's Build Something
             <span className="block bg-gradient-to-r from-brand-300 to-brand-100 bg-clip-text text-transparent">
               Extraordinary Together
             </span>
           </h2>
           
-          <p className="text-xl text-brand-100 leading-relaxed mb-12 max-w-3xl mx-auto">
+          <p className="text-lg text-brand-100 leading-relaxed mb-12 max-w-3xl mx-auto">
             Join Calgary's most successful businesses who trust AZ Media to deliver 
             <strong className="text-white"> premium digital solutions</strong> that drive real results. 
             Your success story starts here.
@@ -57,7 +58,7 @@ export function CTA() {
                   transition={{ delay: i * 0.2 }}
                   className="text-center">
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur rounded-2xl mb-4">
-                    <IconComponent className="w-8 h-8 text-brand-300" />
+                    <IconComponent animation="pulse" className="w-8 h-8 text-brand-300" />
                   </div>
                   <h3 className="text-white font-semibold mb-2">{feature.title}</h3>
                   <p className="text-brand-200 text-sm">{feature.desc}</p>
@@ -70,23 +71,23 @@ export function CTA() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <motion.a 
               href="#estimate"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative overflow-hidden bg-white hover:bg-brand-50 text-brand-900 px-10 py-5 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-2xl inline-flex items-center justify-center gap-3">
+              className="group relative overflow-hidden bg-white hover:bg-brand-50 text-brand-900 px-8 py-4 rounded-xl font-bold text-base transition-all duration-300 hover:shadow-2xl inline-flex items-center justify-center gap-3">
               <div className="absolute inset-0 bg-gradient-to-r from-brand-100 to-white opacity-0 group-hover:opacity-100 transition-opacity" />
               <span className="relative z-10 flex items-center gap-3">
                 Get Your Free Estimate
-                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight animation="pulse" className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
               </span>
             </motion.a>
             
             <motion.a 
               href="#contact"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.95 }}
-              className="group border-2 border-white/30 hover:border-white/60 bg-white/10 hover:bg-white/20 backdrop-blur text-white px-10 py-5 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl inline-flex items-center justify-center gap-3">
+              className="group border-2 border-white/30 hover:border-white/60 bg-white/10 hover:bg-white/20 backdrop-blur text-white px-8 py-4 rounded-xl font-bold text-base transition-all duration-300 hover:shadow-xl inline-flex items-center justify-center gap-3">
               Let's Talk Strategy
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight animation="pulse" className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </motion.a>
           </div>
 

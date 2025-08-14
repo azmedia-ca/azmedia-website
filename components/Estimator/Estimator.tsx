@@ -1,5 +1,5 @@
 'use client'
-import { useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Progress } from './Progress'
 import { FEATURES, BASE, COMPLEXITY, estimateTotal, type ServiceKey } from '@/lib/pricing'
@@ -70,20 +70,23 @@ export function Estimator() {
   return (
     <div className="card p-6">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-2xl font-bold">Estimate Your Cost</h2>
+        <h2 className="text-xl font-bold">Estimate Your Cost</h2>
         <div className="text-sm text-slate-600">CAD • ±15% confidence</div>
       </div>
       <Progress step={step} />
 
-      <div className="mt-6">
+      {/* Fixed height container for consistent sizing */}
+      <div className="mt-6 min-h-[400px] flex flex-col">
         <AnimatePresence mode="wait">
           {step === 0 && (
             <motion.div
               key="step0"
-              initial={{ opacity: 0, y: 6 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              className="grid md:grid-cols-2 gap-4">
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="flex-1 flex flex-col justify-center">
+              <div className="grid md:grid-cols-2 gap-4">
               <Field label="Full name">
                 <input className="input" value={info.name} onChange={e => setInfo({ ...info, name: e.target.value })} placeholder="Jane Doe" />
               </Field>
@@ -99,119 +102,240 @@ export function Estimator() {
               <Field label="Project name" className="md:col-span-2">
                 <input className="input" value={info.projectName} onChange={e => setInfo({ ...info, projectName: e.target.value })} placeholder="Website redesign" />
               </Field>
+              </div>
             </motion.div>
           )}
 
           {step === 1 && (
-            <motion.div key="step1" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }}>
-              <div className="grid md:grid-cols-3 gap-3">
-                {(['Marketing','Web & Digital Solutions','Media & Branding'] as ServiceKey[]).map(s => (
-                  <button
-                    key={s}
-                    onClick={() => setService(s)}
-                    className={`card p-4 text-left hover:-translate-y-1 transition ${service===s ? 'ring-2 ring-brand-400' : ''}`}>
-                    <div className="font-semibold">{s}</div>
-                    <div className="text-xs text-slate-600 mt-1">Base ${BASE[s]}</div>
-                  </button>
-                ))}
-              </div>
-              <div className="mt-6">
-                <div className="label">Complexity</div>
-                <div className="flex flex-wrap gap-2">
-                  {COMPLEXITY.map(c => (
-                    <button key={c.key} onClick={() => setComplexity(c.key)}
-                      className={`btn ${complexity===c.key ? 'bg-brand-600 text-white' : 'btn-ghost'}`}>
-                      {c.label} ×{c.factor.toFixed(2)}
-                    </button>
-                  ))}
+            <motion.div 
+              key="step1" 
+              initial={{ opacity: 0, y: 12 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="flex-1 flex flex-col justify-center">
+              <div className="space-y-6">
+                <div>
+                  <h3 className="font-semibold text-lg mb-4 text-brand-700">Choose Your Service</h3>
+                  <div className="grid md:grid-cols-3 gap-3">
+                    {(['Marketing','Web & Digital Solutions','Media & Branding'] as ServiceKey[]).map(s => (
+                      <motion.button
+                        key={s}
+                        onClick={() => setService(s)}
+                        whileHover={{ scale: 1.01 }}
+                        whileTap={{ scale: 0.98 }}
+                        className={`card px-3 py-2 text-left transition-all duration-200 ${
+                          service===s 
+                            ? 'ring-2 ring-brand-400 bg-brand-50 shadow-lg' 
+                            : 'hover:shadow-md hover:border-brand-200'
+                        }`}>
+                        <div className="font-semibold text-slate-800">{s}</div>
+                        <div className="text-sm text-brand-600 mt-1 font-medium">Base ${BASE[s]}</div>
+                      </motion.button>
+                    ))}
+                  </div>
+                </div>
+                
+                <div>
+                  <h3 className="font-semibold text-lg mb-4 text-brand-700">Project Complexity</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {COMPLEXITY.map(c => (
+                      <motion.button 
+                        key={c.key} 
+                        onClick={() => setComplexity(c.key)}
+                        whileHover={{ scale: 1.01 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={`btn transition-all duration-200 ${
+                          complexity===c.key 
+                            ? 'bg-brand-600 text-white shadow-lg' 
+                            : 'btn-ghost hover:bg-brand-50 hover:border-brand-300'
+                        }`}>
+                        {c.label} ×{c.factor.toFixed(2)}
+                      </motion.button>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
           )}
 
           {step === 2 && (
-            <motion.div key="step2" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }}>
-              <div className="grid gap-4">
+            <motion.div 
+              key="step2" 
+              initial={{ opacity: 0, y: 12 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="flex-1">
+              <h3 className="font-semibold text-lg mb-4 text-brand-700">Select Features & Add-ons</h3>
+              <div className="grid gap-3 max-h-[300px] overflow-y-auto pr-2">
                 {FEATURES[service].map(f => (
-                  <div key={f.key} className="grid grid-cols-1 md:grid-cols-5 items-center gap-3 p-3 rounded-xl border border-black/10">
+                  <motion.div 
+                    key={f.key} 
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: FEATURES[service].indexOf(f) * 0.05 }}
+                    className={`grid grid-cols-1 md:grid-cols-5 items-center gap-3 px-3 py-2 rounded-xl border transition-all duration-200 ${
+                      items[f.key] ? 'border-brand-300 bg-brand-50 shadow-sm' : 'border-slate-200 hover:border-brand-200 hover:bg-slate-50'
+                    }`}>
                     <div className="md:col-span-3">
-                      <div className="font-medium">{f.label}</div>
-                      <div className="text-xs text-slate-600">${f.unit}{f.qty ? ' × qty' : ''}</div>
+                      <div className="font-medium text-slate-800">{f.label}</div>
+                      <div className="text-sm text-brand-600 font-medium">${f.unit}{f.qty ? ' × qty' : ''}</div>
                     </div>
                     <div className="md:col-span-2 flex items-center justify-end gap-2">
                       {f.qty ? (
                         <div className="flex items-center gap-2">
-                          <button className="btn-ghost" onClick={() => setQty(f.key, (items[f.key] || 0) - 1)}>-</button>
-                          <input className="input w-16 text-center" value={items[f.key] || 0} onChange={e => setQty(f.key, Number(e.target.value || 0))} />
-                          <button className="btn-ghost" onClick={() => setQty(f.key, (items[f.key] || 0) + 1)}>+</button>
+                          <motion.button 
+                            className="btn-ghost w-6 h-6 p-0 flex items-center justify-center text-sm" 
+                            onClick={() => setQty(f.key, (items[f.key] || 0) - 1)}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}>
+                            -
+                          </motion.button>
+                          <input 
+                            className="input w-12 text-center text-xs h-6" 
+                            value={items[f.key] || 0} 
+                            onChange={e => setQty(f.key, Number(e.target.value || 0))} 
+                          />
+                          <motion.button 
+                            className="btn-ghost w-6 h-6 p-0 flex items-center justify-center text-sm" 
+                            onClick={() => setQty(f.key, (items[f.key] || 0) + 1)}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}>
+                            +
+                          </motion.button>
                         </div>
                       ) : (
-                        <button className={`btn ${items[f.key] ? 'bg-brand-600 text-white' : 'btn-ghost'}`}
-                          onClick={() => setQty(f.key, items[f.key] ? 0 : 1)}>
+                        <motion.button 
+                          className={`btn ${items[f.key] ? 'bg-brand-600 text-white shadow-md' : 'btn-ghost hover:bg-brand-50'}`}
+                          onClick={() => setQty(f.key, items[f.key] ? 0 : 1)}
+                          whileHover={{ scale: 1.01 }}
+                          whileTap={{ scale: 0.98 }}>
                           {items[f.key] ? 'Remove' : 'Add'}
-                        </button>
+                        </motion.button>
                       )}
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
           )}
 
           {step === 3 && (
-            <motion.div key="step3" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }}>
+            <motion.div 
+              key="step3" 
+              initial={{ opacity: 0, y: 12 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="flex-1 flex flex-col justify-center">
+              <h3 className="font-semibold text-lg mb-4 text-brand-700">Review & Submit</h3>
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="p-4 rounded-xl bg-white border border-black/10">
-                  <div className="font-semibold mb-2">Summary</div>
-                  <ul className="text-sm text-slate-700 space-y-1">
-                    <li>Service: {service}</li>
-                    <li>Complexity: {complexity}</li>
-                    <li>Urgency (days): {daysUntil}</li>
-                    <li>Base: ${estimate.base}</li>
-                    <li>Subtotal: ${estimate.subtotal}</li>
-                    <li>Complexity ×{estimate.complexity.toFixed(2)}</li>
-                    <li>Urgency ×{estimate.urgency.toFixed(2)}</li>
-                    <li className="font-semibold">Estimated Total (CAD): ${estimate.total}</li>
+                <motion.div 
+                  className="px-4 py-3 rounded-xl bg-gradient-to-br from-brand-50 to-white border border-brand-200 shadow-sm"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 }}>
+                  <div className="font-semibold mb-3 text-brand-700 flex items-center gap-2">
+                    <span className="w-6 h-6 bg-brand-600 text-white rounded-full text-xs flex items-center justify-center">✓</span>
+                    Project Summary
+                  </div>
+                  <ul className="text-sm text-slate-700 space-y-2">
+                    <li className="flex justify-between"><span>Service:</span><span className="font-medium">{service}</span></li>
+                    <li className="flex justify-between"><span>Complexity:</span><span className="font-medium capitalize">{complexity}</span></li>
+                    <li className="flex justify-between"><span>Timeline:</span><span className="font-medium">{daysUntil} days</span></li>
+                    <li className="flex justify-between border-t pt-2"><span>Base Price:</span><span className="font-medium">${estimate.base}</span></li>
+                    <li className="flex justify-between"><span>Features Subtotal:</span><span className="font-medium">${estimate.subtotal}</span></li>
+                    <li className="flex justify-between"><span>Complexity Multiplier:</span><span className="font-medium">×{estimate.complexity.toFixed(2)}</span></li>
+                    <li className="flex justify-between"><span>Urgency Multiplier:</span><span className="font-medium">×{estimate.urgency.toFixed(2)}</span></li>
+                    <li className="flex justify-between font-semibold text-lg text-brand-700 border-t pt-2">
+                      <span>Total (CAD):</span><span>${estimate.total}</span>
+                    </li>
                   </ul>
-                  <button onClick={() => window.print()} className="btn-ghost mt-3">Print / Save PDF</button>
-                </div>
-                <div className="p-4 rounded-xl bg-white border border-black/10">
+                  <motion.button 
+                    onClick={() => window.print()} 
+                    className="btn-ghost mt-3 w-full h-8"
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.98 }}>
+                    📄 Save as PDF
+                  </motion.button>
+                </motion.div>
+                
+                <motion.div 
+                  className="px-4 py-3 rounded-xl bg-white border border-slate-200 shadow-sm"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}>
                   {!sent ? (
-                    <div>
-                      <div className="font-semibold mb-2">Submit your request</div>
-                      <p className="text-sm text-slate-600 mb-3">We’ll email this estimate and details to our team.</p>
-                      <button
+                    <div className="h-full flex flex-col justify-center">
+                      <div className="font-semibold mb-3 text-slate-800">Submit Your Request</div>
+                      <p className="text-sm text-slate-600 mb-4">We'll email this estimate to our team and get back to you within 24 hours.</p>
+                      <motion.button
                         onClick={submit}
                         disabled={sending}
-                        className="btn-primary w-full flex items-center justify-center">
-                        {sending ? (<><Loader2 className="mr-2 animate-spin"/> Sending…</>) : 'Submit your request now'}
-                      </button>
+                        className="btn-primary w-full flex items-center justify-center h-8"
+                        whileHover={!sending ? { scale: 1.01 } : {}}
+                        whileTap={!sending ? { scale: 0.98 } : {}}>
+                        {sending ? (
+                          <><Loader2 className="mr-2 animate-spin"/> Sending…</>
+                        ) : (
+                          <>🚀 Submit Request</>
+                        )}
+                      </motion.button>
                     </div>
                   ) : (
-                    <div className="text-center">
-                      <svg className="checkmark mx-auto mb-2" width="64" height="64" viewBox="0 0 24 24" fill="none">
+                    <motion.div 
+                      className="text-center h-full flex flex-col justify-center"
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ delay: 0.3, type: "spring" }}>
+                      <motion.svg 
+                        className="checkmark mx-auto mb-3" 
+                        width="64" 
+                        height="64" 
+                        viewBox="0 0 24 24" 
+                        fill="none"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}>
                         <path d="M20 7L9 18L4 13" stroke="rgb(var(--brand-600))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                      <div className="font-semibold">Sent</div>
-                      <div className="text-sm text-slate-600">We will be in touch very soon.</div>
-                    </div>
+                      </motion.svg>
+                      <div className="font-semibold text-brand-700 text-lg">Request Sent!</div>
+                      <div className="text-sm text-slate-600 mt-1">We'll be in touch within 24 hours.</div>
+                    </motion.div>
                   )}
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
 
-      <div className="mt-6 flex justify-between">
-        <button onClick={() => setStep(s => Math.max(0, s - 1))} className="btn-ghost">Back</button>
+      <div className="mt-6 flex justify-between items-center">
+        <motion.button 
+          onClick={() => setStep(s => Math.max(0, s - 1))} 
+          className="btn-ghost disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled={step === 0}
+          whileHover={step > 0 ? { scale: 1.01 } : {}}
+          whileTap={step > 0 ? { scale: 0.98 } : {}}>
+          ← Back
+        </motion.button>
+        
+        <div className="text-sm text-slate-500 font-medium">
+          Step {step + 1} of 4
+        </div>
+        
         {step < 3 ? (
-          <button
+          <motion.button
             onClick={() => setStep(s => Math.min(3, s + 1))}
-            className="btn-primary">
-            Next
-          </button>
-        ) : null}
+            className="btn-primary"
+            whileHover={{ scale: 1.01 }}
+            whileTap={{ scale: 0.98 }}>
+            Next →
+          </motion.button>
+        ) : (
+          <div className="w-16"></div>
+        )}
       </div>
     </div>
   )

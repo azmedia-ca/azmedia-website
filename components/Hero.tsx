@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion'
 import NextImage from 'next/image'
 import { ThreeDMarqueeDemo } from './3dMarquee'
-import { ArrowRight, Star, Award, TrendingUp } from 'lucide-react'
+import { ArrowRight, Star, Award, TrendingUp } from '@/components/icons/AnimatedIcons'
 
 export function Hero() {
   return (
@@ -28,11 +28,11 @@ export function Hero() {
               transition={{ delay: 0.2 }}
               className="inline-flex items-center gap-2 bg-white/80 backdrop-blur border border-brand-200/50 rounded-full px-4 py-2 mb-6">
               <div className="flex items-center gap-1">
-                <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                <Star animation="pulse" className="w-4 h-4 text-yellow-500 fill-current" />
+                <Star animation="pulse" className="w-4 h-4 text-yellow-500 fill-current" />
+                <Star animation="pulse" className="w-4 h-4 text-yellow-500 fill-current" />
+                <Star animation="pulse" className="w-4 h-4 text-yellow-500 fill-current" />
+                <Star animation="pulse" className="w-4 h-4 text-yellow-500 fill-current" />
               </div>
               <span className="text-sm font-medium text-slate-700">Proudly Calgary-based • 5-star rated</span>
             </motion.div>
@@ -58,7 +58,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-4xl md:text-7xl font-bold leading-tight mb-6">
+              className="text-3xl md:text-5xl font-bold leading-tight mb-6">
               Where Creativity Meets{' '}
               <span className="relative">
                 <span className="text-brand-600">Results</span>
@@ -76,7 +76,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-xl text-slate-600 leading-relaxed mb-8 max-w-2xl">
+              className="text-lg text-slate-600 leading-relaxed mb-8 max-w-2xl">
               We're Calgary's premier digital agency, transforming ambitious brands through 
               <strong className="text-slate-800"> strategic design, cutting-edge development</strong>, and 
               <strong className="text-slate-800"> data-driven marketing</strong> that delivers measurable results.
@@ -89,16 +89,16 @@ export function Hero() {
               transition={{ delay: 0.6 }}
               className="grid grid-cols-3 gap-6 mb-8">
               <div className="text-center">
-                <div className="text-2xl font-bold text-brand-600">320+</div>
-                <div className="text-sm text-slate-600">Projects Delivered</div>
+                <div className="text-xl font-bold text-brand-600">320+</div>
+                <div className="text-xs text-slate-600">Projects Delivered</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-brand-600">92%</div>
-                <div className="text-sm text-slate-600">Client Retention</div>
+                <div className="text-xl font-bold text-brand-600">92%</div>
+                <div className="text-xs text-slate-600">Client Retention</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-brand-600">10+</div>
-                <div className="text-sm text-slate-600">Years Experience</div>
+                <div className="text-xl font-bold text-brand-600">10+</div>
+                <div className="text-xs text-slate-600">Years Experience</div>
               </div>
             </motion.div>
 
@@ -110,18 +110,18 @@ export function Hero() {
               className="flex flex-col sm:flex-row gap-4">
               <a 
                 href="#estimate" 
-                className="group relative overflow-hidden bg-brand-600 hover:bg-brand-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl inline-flex items-center justify-center gap-2">
+                className="group relative overflow-hidden bg-brand-600 hover:bg-brand-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-xl inline-flex items-center justify-center gap-2 text-sm">
                 <div className="absolute inset-0 bg-gradient-to-r from-brand-400 to-brand-800 opacity-0 group-hover:opacity-100 transition-opacity" />
                 <span className="relative z-10 flex items-center gap-2">
                   Get Your Free Estimate
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight animation="pulse" className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </a>
               <a 
                 href="#portfolio" 
-                className="group bg-white/80 backdrop-blur hover:bg-white border border-slate-200 hover:border-brand-300 text-slate-700 hover:text-brand-700 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg inline-flex items-center justify-center gap-2">
+                className="group bg-white/80 backdrop-blur hover:bg-white border border-slate-200 hover:border-brand-300 text-slate-700 hover:text-brand-700 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg inline-flex items-center justify-center gap-2 text-sm">
                 View Our Work
-                <TrendingUp className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                <TrendingUp animation="pulse" className="w-5 h-5 group-hover:scale-110 transition-transform" />
               </a>
             </motion.div>
           </motion.div>
@@ -146,7 +146,7 @@ export function Hero() {
               transition={{ delay: 1.2 }}
               className="absolute -top-4 -right-4 bg-white/90 backdrop-blur rounded-2xl p-3 shadow-lg border border-brand-200/50">
               <div className="flex items-center gap-2 text-sm">
-                <Award className="w-5 h-5 text-brand-600" />
+                <Award animation="pulse" className="w-5 h-5 text-brand-600" />
                 <span className="font-medium">Award Winning</span>
               </div>
             </motion.div>
@@ -157,7 +157,7 @@ export function Hero() {
               transition={{ delay: 1.4 }}
               className="absolute -bottom-4 -left-4 bg-white/90 backdrop-blur rounded-2xl p-3 shadow-lg border border-brand-200/50">
               <div className="flex items-center gap-2 text-sm">
-                <TrendingUp className="w-5 h-5 text-green-600" />
+                <TrendingUp animation="pulse" className="w-5 h-5 text-green-600" />
                 <span className="font-medium">ROI Focused</span>
               </div>
             </motion.div>

@@ -1,7 +1,8 @@
 'use client'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { ArrowUpRight, TrendingUp, Users, Calendar } from 'lucide-react'
+import { TrendingUp, Users } from '@/components/icons/AnimatedIcons'
+import { ArrowUpRight, Calendar } from 'lucide-react'
 
 interface CaseStudy {
   id: string
@@ -113,16 +114,16 @@ export function Portfolio() {
     <div>
       <div className="text-center mb-20">
         <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-100 to-brand-50 text-brand-800 px-6 py-3 rounded-full text-sm font-semibold mb-8 shadow-sm">
-          <TrendingUp className="w-4 h-4 text-brand-600" />
+          <TrendingUp animation="pulse" className="w-4 h-4 text-brand-600" />
           Portfolio & Results
         </div>
-        <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
           Proven Success Stories{' '}
           <span className="block bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent">
             That Deliver Results
           </span>
         </h2>
-        <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
           Real projects, real results. See how we've transformed Calgary businesses with strategic 
           digital solutions that drive <strong className="text-brand-600">measurable growth and ROI</strong>.
         </p>
@@ -159,7 +160,7 @@ export function Portfolio() {
             className="group cursor-pointer h-full"
             onClick={() => setSelectedCase(study)}
           >
-            <div className="card overflow-hidden hover:-translate-y-3 hover:shadow-2xl transition-all duration-500 group-hover:ring-2 group-hover:ring-brand-200 h-full flex flex-col">
+            <div className="card overflow-hidden hover:shadow-2xl transition-all duration-500 group-hover:ring-2 group-hover:ring-brand-200 h-full flex flex-col">
               {/* Enhanced image with better placeholder */}
               <div className="h-56 bg-gradient-to-br from-brand-100 via-brand-50 to-brand-200 relative overflow-hidden">
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
@@ -189,11 +190,11 @@ export function Portfolio() {
               <div className="p-8 flex-1 flex flex-col">
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h3 className="font-bold text-xl mb-2 group-hover:text-brand-700 transition-colors">{study.title}</h3>
+                    <h3 className="font-bold text-lg mb-2 group-hover:text-brand-700 transition-colors">{study.title}</h3>
                     <p className="text-brand-600 font-semibold">{study.client}</p>
                   </div>
                   <div className="flex items-center gap-1 text-xs text-slate-500">
-                    <Users className="w-3 h-3" />
+                    <Users animation="pulse" className="w-3 h-3" />
                     {study.teamSize}
                   </div>
                 </div>
@@ -204,7 +205,7 @@ export function Portfolio() {
                 <div className="grid grid-cols-3 gap-4 mb-4">
                   {study.results.slice(0, 3).map((result, idx) => (
                     <div key={idx} className="text-center p-3 bg-slate-50 rounded-lg group-hover:bg-brand-50 transition-colors">
-                      <div className="text-2xl font-bold text-brand-600 mb-1">{result.value}</div>
+                      <div className="text-xl font-bold text-brand-600 mb-1">{result.value}</div>
                       <div className="text-xs text-slate-600 font-medium">{result.metric}</div>
                     </div>
                   ))}
@@ -240,7 +241,7 @@ export function Portfolio() {
               {/* Header */}
               <div className="flex items-start justify-between mb-6">
                 <div>
-                  <h3 className="text-2xl font-bold mb-2">{selectedCase.title}</h3>
+                  <h3 className="text-xl font-bold mb-2">{selectedCase.title}</h3>
                   <p className="text-brand-600 font-medium">{selectedCase.client}</p>
                 </div>
                 <button
@@ -258,7 +259,7 @@ export function Portfolio() {
                   {selectedCase.duration}
                 </div>
                 <div className="flex items-center gap-1">
-                  <Users className="w-4 h-4" />
+                  <Users animation="pulse" className="w-4 h-4" />
                   {selectedCase.teamSize} team members
                 </div>
                 <div className="inline-block bg-brand-100 text-brand-700 px-2 py-1 rounded-full">
@@ -281,13 +282,13 @@ export function Portfolio() {
               {/* Results */}
               <div className="mb-8">
                 <h4 className="font-semibold mb-4 flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5 text-brand-600" />
+                  <TrendingUp animation="pulse" className="w-5 h-5 text-brand-600" />
                   Results & Impact
                 </h4>
                 <div className="grid md:grid-cols-3 gap-4">
                   {selectedCase.results.map((result, idx) => (
                     <div key={idx} className="card p-4 text-center">
-                      <div className="text-3xl font-bold text-brand-600 mb-1">{result.value}</div>
+                      <div className="text-2xl font-bold text-brand-600 mb-1">{result.value}</div>
                       <div className="text-sm text-slate-600">{result.improvement}</div>
                       <div className="text-xs text-slate-500 mt-1">{result.metric}</div>
                     </div>

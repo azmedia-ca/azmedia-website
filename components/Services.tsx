@@ -1,10 +1,11 @@
 'use client'
 import { motion } from 'framer-motion'
-import { Megaphone, MonitorSmartphone, Palette, ArrowRight, CheckCircle } from 'lucide-react'
+import { AnimatedIcon, Marketing, Development, Design, ArrowRight, CheckCircle } from '@/components/icons/AnimatedIcons'
+import { Megaphone } from 'lucide-react'
 
 const services = [
   {
-    icon: Megaphone,
+    icon: Marketing,
     title: 'Strategic Marketing',
     desc: 'Data-driven campaigns that amplify your brand and accelerate growth across all channels.',
     points: [
@@ -21,7 +22,7 @@ const services = [
     accentColor: 'text-rose-600'
   },
   {
-    icon: MonitorSmartphone,
+    icon: Development,
     title: 'Web & Digital Solutions',
     desc: 'Premium websites and applications engineered for performance, scalability, and results.',
     points: [
@@ -38,7 +39,7 @@ const services = [
     accentColor: 'text-emerald-600'
   },
   {
-    icon: Palette,
+    icon: Design,
     title: 'Brand & Creative',
     desc: 'Distinctive visual identities and compelling content that captivate and convert.',
     points: [
@@ -66,13 +67,13 @@ export function Services() {
           <Megaphone className="w-4 h-4 text-brand-600" />
           Our Services
         </div>
-        <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
           Full-Service Digital{' '}
           <span className="block bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent">
             Excellence
           </span>
         </h2>
-        <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
           From strategic marketing to cutting-edge development, we provide comprehensive 
           digital solutions that drive <strong className="text-brand-600">measurable business growth</strong>.
         </p>
@@ -91,16 +92,16 @@ export function Services() {
               transition={{ delay: i * 0.2, duration: 0.6, ease: "easeOut" }}
               className="group relative">
               
-              <div className="card-premium overflow-hidden h-full transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 flex flex-col">
+              <div className="card-premium overflow-hidden h-full transition-all duration-300 hover:shadow-2xl flex flex-col">
                 
                 {/* Header */}
                 <div className={`bg-gradient-to-br ${service.bgGradient} p-8 relative overflow-hidden`}>
                   <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
                   <div className="relative z-10">
                     <div className={`inline-flex items-center justify-center w-16 h-16 ${service.iconBg} rounded-2xl mb-6 text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                      <IconComponent className="w-8 h-8" />
+                      <IconComponent animation="pulse" className="w-8 h-8" />
                     </div>
-                    <h3 className="text-2xl font-bold mb-3 text-slate-900">{service.title}</h3>
+                    <h3 className="text-xl font-bold mb-3 text-slate-900">{service.title}</h3>
                     <p className="text-slate-600 leading-relaxed">{service.desc}</p>
                   </div>
                 </div>
@@ -117,11 +118,14 @@ export function Services() {
                         transition={{ delay: i * 0.2 + idx * 0.1 }}
                         className="flex items-center gap-3"
                       >
-                        <CheckCircle className={`w-5 h-5 flex-shrink-0 transition-colors ${
-                          point.highlight 
-                            ? `${service.accentColor}` 
-                            : 'text-slate-400'
-                        }`} />
+                        <CheckCircle 
+                          animation="pulse" 
+                          className={`w-5 h-5 flex-shrink-0 transition-colors ${
+                            point.highlight 
+                              ? `${service.accentColor}` 
+                              : 'text-slate-400'
+                          }`} 
+                        />
                         <span className={point.highlight 
                           ? 'font-semibold text-slate-900' 
                           : 'text-slate-600'
@@ -138,7 +142,7 @@ export function Services() {
                       href="#estimate"
                       className={`group/cta inline-flex items-center gap-2 bg-gradient-to-r ${service.gradientFrom} ${service.gradientTo} hover:shadow-lg text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 w-full justify-center hover:scale-105`}>
                       Get Started
-                      <ArrowRight className="w-4 h-4 group-hover/cta:translate-x-1 transition-transform" />
+                      <ArrowRight animation="pulse" className="w-4 h-4 group-hover/cta:translate-x-1 transition-transform" />
                     </a>
                   </div>
                 </div>
@@ -161,18 +165,18 @@ export function Services() {
           <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-brand-200/30 to-brand-300/20 rounded-full blur-3xl"></div>
           <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-gradient-to-br from-brand-300/20 to-brand-200/30 rounded-full blur-3xl"></div>
           <div className="relative z-10">
-            <h3 className="text-3xl font-bold mb-4">
+            <h3 className="text-2xl font-bold mb-4">
               Need a <span className="bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent">Custom Solution?</span>
             </h3>
-            <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
               Every business is unique. Let's discuss how we can create a tailored digital strategy 
               that perfectly fits your <strong className="text-brand-600">goals and budget</strong>.
             </p>
             <a 
               href="#contact"
-              className="btn-primary text-lg px-10 py-4">
+              className="btn-primary px-8 py-3">
               Schedule a Consultation
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <ArrowRight animation="pulse" className="w-5 h-5 ml-2" />
             </a>
           </div>
         </div>
