@@ -40,7 +40,7 @@ export function ThreeDMarqueeDemo() {
     "https://assets.aceternity.com/cloudinary_bkp/Tracing_Beam_npujte.png",
   ];
   return (
-    <div className="mx-auto my-2 w-full max-w-md sm:max-w-xl lg:max-w-3xl xl:max-w-4xl rounded-lg bg-teal/5   ring-neutral-700/10 dark:bg-neutral-800">
+    <div className="mx-auto my-2 w-full max-w-md sm:max-w-xl lg:max-w-3xl xl:max-w-4xl rounded-lg bg-teal-50/50 ring-1 ring-neutral-700/10 dark:bg-neutral-800 overflow-hidden">
       <ThreeDMarquee images={images} />
     </div>
   );

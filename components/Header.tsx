@@ -106,8 +106,8 @@ export function Header() {
         <motion.div
           initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }}
           transition={{ type: 'spring', damping: 24, stiffness: 240 }}
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm md:hidden z-[9999]">
-          <div className="ml-auto h-full w-80 bg-white/95 backdrop-blur-md p-6 flex flex-col gap-4 border-l border-brand-200/30">
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm md:hidden z-[9999]" onClick={() => setOpen(false)}>
+          <div className="ml-auto h-full w-80 max-w-[85vw] bg-white/95 backdrop-blur-md p-6 flex flex-col gap-4 border-l border-brand-200/30" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between pb-4 border-b border-brand-100">
               <div className="font-bold text-lg bg-gradient-to-r from-brand-600 to-brand-500 bg-clip-text text-transparent">
                 AZ Media
