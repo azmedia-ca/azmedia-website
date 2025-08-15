@@ -33,26 +33,23 @@ export function Header() {
 
   useEffect(() => {
     const mql = window.matchMedia('(min-width: 768px)')
-    const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
-      // MediaQueryListEvent for modern browsers; fallback to initial MediaQueryList call
-      setIsDesktop('matches' in e ? e.matches : (e as MediaQueryList).matches)
-    }
     // Set initial value
-    handleChange(mql)
+    setIsDesktop(mql.matches)
+    const onChange = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
     // Subscribe to changes
     if (typeof mql.addEventListener === 'function') {
-      mql.addEventListener('change', handleChange as (e: MediaQueryListEvent) => void)
+      mql.addEventListener('change', onChange)
     } else {
-      // Safari fallback
-      // @ts-expect-error deprecated in modern browsers but needed for Safari
-      mql.addListener(handleChange)
+      // Safari fallback (deprecated but still present)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      mql.addListener(onChange as any)
     }
     return () => {
       if (typeof mql.removeEventListener === 'function') {
-        mql.removeEventListener('change', handleChange as (e: MediaQueryListEvent) => void)
+        mql.removeEventListener('change', onChange)
       } else {
-        // @ts-expect-error Safari fallback
-        mql.removeListener(handleChange)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        mql.removeListener(onChange as any)
       }
     }
   }, [])
