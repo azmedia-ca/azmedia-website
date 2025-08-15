@@ -307,12 +307,6 @@ p {
   .mobile-container {
     @apply px-3;
   }
-  
-  /* Ensure no element causes horizontal overflow */
-  section, div, main {
-    max-width: 100vw;
-    overflow-x: hidden;
-  }
 }
 
 /* Ensure floating elements don't cause overflow */

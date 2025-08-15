@@ -19,17 +19,17 @@ export const ThreeDMarquee = ({
   return (
     <div
       className={cn(
-        "mx-auto block h-[300px] sm:h-[360px] md:h-[420px] lg:h-[480px] xl:h-[540px] overflow-hidden rounded-2xl",
+        "mx-auto block h-[350px] sm:h-[420px] md:h-[480px] lg:h-[540px] xl:h-[580px] overflow-hidden rounded-2xl",
         className,
       )}
     >
       <div className="flex size-full items-center justify-center">
-        <div className="size-[1000px] sm:size-[1200px] md:size-[1400px] lg:size-[1720px] shrink-0 scale-[0.4] sm:scale-50 md:scale-75 lg:scale-100">
+        <div className="size-[1200px] sm:size-[1400px] lg:size-[1720px] shrink-0 scale-[0.6] sm:scale-75 lg:scale-100">
           <div
             style={{
               transform: "rotateX(55deg) rotateY(0deg) rotateZ(-45deg)",
             }}
-            className="relative top-16 sm:top-24 md:top-48 lg:top-96 right-0 sm:right-[15%] md:right-[25%] lg:right-[50%] grid size-full origin-top-left grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 md:gap-6 lg:gap-8 transform-3d"
+            className="relative top-32 sm:top-48 lg:top-96 right-[20%] sm:right-[25%] lg:right-[50%] grid size-full origin-top-left grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 transform-3d"
           >
             {chunks.map((subarray, colIndex) => (
               <motion.div
