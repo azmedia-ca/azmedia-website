@@ -19,6 +19,7 @@ export function Header() {
   const [open, setOpen] = useState(false)
   const [hovered, setHovered] = useState<string | null>(null)
   const [compact, setCompact] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
 
   useEffect(() => {
     const onScroll = () => {
@@ -30,16 +31,42 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    const mql = window.matchMedia('(min-width: 768px)')
+    const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
+      // MediaQueryListEvent for modern browsers; fallback to initial MediaQueryList call
+      setIsDesktop('matches' in e ? e.matches : (e as MediaQueryList).matches)
+    }
+    // Set initial value
+    handleChange(mql)
+    // Subscribe to changes
+    if (typeof mql.addEventListener === 'function') {
+      mql.addEventListener('change', handleChange as (e: MediaQueryListEvent) => void)
+    } else {
+      // Safari fallback
+      // @ts-expect-error deprecated in modern browsers but needed for Safari
+      mql.addListener(handleChange)
+    }
+    return () => {
+      if (typeof mql.removeEventListener === 'function') {
+        mql.removeEventListener('change', handleChange as (e: MediaQueryListEvent) => void)
+      } else {
+        // @ts-expect-error Safari fallback
+        mql.removeListener(handleChange)
+      }
+    }
+  }, [])
+
   return (
     <>
     <motion.header 
-      className="fixed top-0 left-0 right-0 z-[1000] bg-white/95 backdrop-blur-md"
+      className="fixed top-0 left-0 right-0 z-[1000] bg-white md:bg-white/95 md:backdrop-blur-md"
       initial={false}
-      animate={compact ? { backgroundColor: 'rgba(255,255,255,0.92)' } : { backgroundColor: 'rgba(255,255,255,0.95)' }}
+      animate={!isDesktop ? { backgroundColor: 'rgba(255,255,255,1)' } : (compact ? { backgroundColor: 'rgba(255,255,255,0.92)' } : { backgroundColor: 'rgba(255,255,255,1)' })}
       transition={{ duration: 0.25 }}
     >
       <div className="container">
-        <div className={`flex items-center justify-between transition-all duration-300 ${compact ? 'h-14 rounded-2xl border border-brand-200/60 bg-white/90 shadow-md px-3 mt-2' : 'h-18 px-0'}`}>
+        <div className={`flex items-center justify-between transition-all duration-300 ${compact ? 'h-14 rounded-2xl border border-brand-200/60 md:bg-white/90 bg-white shadow-md px-3 mt-2' : 'h-18 px-0'}`}>
         <Link href="/" className="flex items-center gap-3 group" aria-label="AZ Media home">
           <div className="relative">
             <Image
@@ -106,13 +133,13 @@ export function Header() {
         <motion.div
           initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }}
           transition={{ type: 'spring', damping: 24, stiffness: 240 }}
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm md:hidden z-[9999]" onClick={() => setOpen(false)}>
-          <div className="ml-auto h-full w-80 max-w-[85vw] bg-white p-6 flex flex-col gap-4 border-l border-brand-200/30 shadow-lg" onClick={(e) => e.stopPropagation()}>
+          className="fixed inset-0 bg-black/80 md:hidden z-[9999]" onClick={() => setOpen(false)}>
+          <div className="ml-auto h-full w-80 max-w-[85vw] bg-white p-6 flex flex-col gap-4 border-l-2 border-gray-400 shadow-2xl relative z-10" onClick={(e) => e.stopPropagation()} style={{backgroundColor: '#ffffff'}}>
             <div className="flex items-center justify-between pb-4 border-b border-brand-100">
               <div className="font-bold text-lg bg-gradient-to-r from-brand-600 to-brand-500 bg-clip-text text-transparent">
                 AZ Media
               </div>
-              <button className="btn-ghost p-2" onClick={() => setOpen(false)}>
+              <button className="inline-flex items-center justify-center p-2 bg-white border border-brand-200 hover:border-brand-300 text-brand-700 hover:text-brand-800 hover:bg-brand-50 rounded-xl transition-all duration-300" onClick={() => setOpen(false)}>
                 <X animation="pulse" size={20}/>
               </button>
             </div>
@@ -121,13 +148,14 @@ export function Header() {
                 key={n.href} 
                 href={n.href} 
                 onClick={() => setOpen(false)} 
-                className="px-4 py-3 text-slate-700 hover:text-brand-700 hover:bg-brand-50 rounded-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 font-medium"
+                className="px-4 py-3 text-slate-700 hover:text-brand-700 hover:bg-brand-50 rounded-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 font-medium bg-transparent"
+                style={{backgroundColor: 'transparent'}}
               >
                 {n.label}
               </a>
             ))}
             <div className="mt-4 pt-4 border-t border-brand-100 space-y-3">
-              <a href="#estimate" onClick={() => setOpen(false)} className="btn-ghost w-full justify-start">
+              <a href="#estimate" onClick={() => setOpen(false)} className="inline-flex items-center justify-start w-full px-4 py-2.5 bg-white border border-brand-200 hover:border-brand-300 text-brand-700 hover:text-brand-800 hover:bg-brand-50 rounded-xl font-semibold transition-all duration-300 shadow-sm hover:shadow-md">
                 <Calculator animation="pulse" size={18} className="mr-3"/>
                 Get a Quote
               </a>
