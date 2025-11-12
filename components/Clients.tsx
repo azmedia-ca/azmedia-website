@@ -1,23 +1,36 @@
 'use client'
 import { motion } from 'framer-motion'
-import { Building2, Users, Star, TrendingUp } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
+import {
+  Banknote,
+  Briefcase,
+  Building2,
+  Cpu,
+  Fuel,
+  HeartPulse,
+  ShoppingCart,
+  Star,
+  TrendingUp,
+  Users,
+  UtensilsCrossed
+} from 'lucide-react'
 
-const clients = [
-  { name: 'Technology', industry: 'Sector', logo: 'T' },
-  { name: 'Hospitality', industry: 'Sector', logo: 'H' },
-  { name: 'E-commerce', industry: 'Sector', logo: 'EC' },
-  { name: 'Healthcare', industry: 'Sector', logo: 'HC' },
-  { name: 'Construction', industry: 'Sector', logo: 'C' },
-  { name: 'Professional Services', industry: 'Sector', logo: 'PS' },
-  { name: 'Energy', industry: 'Sector', logo: 'EN' },
-  { name: 'Finance', industry: 'Sector', logo: 'F' }
+const clients: { name: string; industry: string; icon: LucideIcon }[] = [
+  { name: 'Technology', industry: 'SaaS & IT Services', icon: Cpu },
+  { name: 'Hospitality', industry: 'Hotels & Restaurants', icon: UtensilsCrossed },
+  { name: 'E-commerce', industry: 'Retail Marketplaces', icon: ShoppingCart },
+  { name: 'Healthcare', industry: 'Clinics & Wellness', icon: HeartPulse },
+  { name: 'Construction', industry: 'Builders & Trades', icon: Building2 },
+  { name: 'Professional Services', industry: 'Consulting & Legal', icon: Briefcase },
+  { name: 'Energy', industry: 'Renewables & Utilities', icon: Fuel },
+  { name: 'Finance', industry: 'Banking & Fintech', icon: Banknote }
 ]
 
 const testimonials = [
   {
     quote: "Professional service and attention to detail. They understand our business needs and deliver quality solutions.",
-    author: "Technology Sector",
-    position: "Client",
+    author: "M. Moussa",
+    position: "CTO",
     avatar: "T"
   },
   {
@@ -98,8 +111,11 @@ export function Clients() {
               className="flex gap-12 py-4 whitespace-nowrap">
               {[...clients, ...clients].map((client, i) => (
                 <div key={i} className="flex items-center gap-3 flex-shrink-0">
-                  <div className="w-10 h-10 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600 font-bold text-sm">
-                    {client.logo}
+                  <div
+                    className="w-10 h-10 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600"
+                    aria-hidden="true"
+                  >
+                    <client.icon className="w-5 h-5" />
                   </div>
                   <div>
                     <div className="font-semibold text-slate-900">{client.name}</div>
