@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion'
 import NextImage from 'next/image'
 import { ThreeDMarqueeDemo } from './3dMarquee'
-import { ArrowRight, Star, Award, TrendingUp } from '@/components/icons/AnimatedIcons'
+import { ArrowRight, Award, TrendingUp } from '@/components/icons/AnimatedIcons'
 
 export function Hero() {
   return (
@@ -115,7 +115,7 @@ export function Hero() {
               className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 bg-white/90 backdrop-blur rounded-2xl p-2 sm:p-3 shadow-lg border border-brand-200/50">
               <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm">
                 <Award animation="pulse" className="w-4 h-4 sm:w-5 sm:h-5 text-brand-600" />
-                <span className="font-medium">Award Winning</span>
+                <span className="font-medium">Quality Guaranteed</span>
               </div>
             </motion.div>
 

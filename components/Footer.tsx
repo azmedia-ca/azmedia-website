@@ -74,9 +74,14 @@ export function Footer() {
                     +1 (587) 3936400
                   </a>
                 </div>
-                <div className="flex items-center gap-3 text-slate-300">
-                  <MapPin className="w-5 h-5 text-brand-400" />
-                  <span>Calgary, Alberta, Canada</span>
+                <div className="flex items-start gap-3 text-slate-300">
+                  <MapPin className="w-5 h-5 text-brand-400 mt-0.5" />
+                  <address className="not-italic leading-relaxed">
+                    Suite 1800, Tower One<br />
+                    330 5th Avenue SW<br />
+                    Calgary, AB T2P 5H4<br />
+                    Canada
+                  </address>
                 </div>
               </div>
 

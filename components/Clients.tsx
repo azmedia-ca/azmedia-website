@@ -3,34 +3,34 @@ import { motion } from 'framer-motion'
 import { Building2, Users, Star, TrendingUp } from 'lucide-react'
 
 const clients = [
-  { name: 'TechFlow Solutions', industry: 'Technology', logo: 'TF' },
-  { name: 'Bella Vista Restaurant', industry: 'Hospitality', logo: 'BV' },
-  { name: 'Mountain Gear Co.', industry: 'E-commerce', logo: 'MG' },
-  { name: 'Calgary Medical Center', industry: 'Healthcare', logo: 'CM' },
-  { name: 'Alpine Construction', industry: 'Construction', logo: 'AC' },
-  { name: 'Northstar Consulting', industry: 'Professional Services', logo: 'NS' },
-  { name: 'Prairie Energy Ltd.', industry: 'Energy', logo: 'PE' },
-  { name: 'Riverstone Capital', industry: 'Finance', logo: 'RC' }
+  { name: 'Technology', industry: 'Sector', logo: 'T' },
+  { name: 'Hospitality', industry: 'Sector', logo: 'H' },
+  { name: 'E-commerce', industry: 'Sector', logo: 'EC' },
+  { name: 'Healthcare', industry: 'Sector', logo: 'HC' },
+  { name: 'Construction', industry: 'Sector', logo: 'C' },
+  { name: 'Professional Services', industry: 'Sector', logo: 'PS' },
+  { name: 'Energy', industry: 'Sector', logo: 'EN' },
+  { name: 'Finance', industry: 'Sector', logo: 'F' }
 ]
 
 const testimonials = [
   {
-    quote: "AZ Media transformed our entire digital presence. ROI increased 340% in 6 months.",
-    author: "Sarah Chen",
-    position: "CEO, TechFlow Solutions",
-    avatar: "SC"
+    quote: "Professional service and attention to detail. They understand our business needs and deliver quality solutions.",
+    author: "Technology Sector",
+    position: "Client",
+    avatar: "T"
   },
   {
-    quote: "From empty tables to fully booked weekends. Their marketing strategy is exceptional.",
-    author: "Marco Rossi",
-    position: "Owner, Bella Vista Restaurant", 
-    avatar: "MR"
+    quote: "Great communication throughout the project. They helped us improve our digital presence effectively.",
+    author: "Hospitality Sector",
+    position: "Client",
+    avatar: "H"
   },
   {
-    quote: "The e-commerce platform they built scaled perfectly with our rapid growth.",
-    author: "David Kim",
-    position: "Founder, Mountain Gear Co.",
-    avatar: "DK"
+    quote: "Reliable partner for our digital needs. The team is responsive and delivers on time.",
+    author: "E-commerce Sector",
+    position: "Client",
+    avatar: "E"
   }
 ]
 
@@ -54,12 +54,12 @@ export function Clients() {
           Client Success Stories
         </div>
         <h2 className="text-4xl md:text-5xl font-bold mb-6">
-          Trusted by Calgary's
-          <span className="block text-brand-600">Leading Businesses</span>
+          Serving Diverse
+          <span className="block text-brand-600">Industries & Sectors</span>
         </h2>
         <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-          From startups to established enterprises, we've helped businesses across 
-          Calgary achieve remarkable digital transformation and growth.
+          We work with businesses across various industries, from startups to established 
+          enterprises, helping them achieve their digital transformation goals.
         </p>
       </div>
 
@@ -88,7 +88,7 @@ export function Clients() {
 
       {/* Client logos marquee */}
       <div className="card p-8 mb-16 overflow-hidden">
-        <h3 className="text-xl font-semibold text-center mb-8">Proudly Serving Calgary Businesses</h3>
+        <h3 className="text-xl font-semibold text-center mb-8">Industries We Serve</h3>
         <div className="relative">
           <div className="overflow-hidden">
             <motion.div
@@ -162,10 +162,10 @@ export function Clients() {
         viewport={{ once: true }}
         className="text-center mt-16">
         <div className="card p-8 bg-gradient-to-r from-brand-50 to-brand-100/50">
-          <h3 className="text-2xl font-bold mb-4">Join Calgary's Most Successful Businesses</h3>
+          <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Digital Presence?</h3>
           <p className="text-slate-600 mb-6 max-w-2xl mx-auto">
-            Ready to achieve the same remarkable results? Let's discuss how we can transform 
-            your digital presence and drive unprecedented growth.
+            Let's discuss how we can help your business achieve its digital transformation 
+            goals and drive meaningful growth.
           </p>
           <a 
             href="#estimate"

@@ -41,6 +41,7 @@ export function ContactForm() {
       icon: MapPin,
       label: 'Visit Us',
       value: 'Calgary, Alberta',
+      href: 'https://maps.app.goo.gl/CJND1Pa3mTmFraDy9',
       desc: 'Proudly serving Western Canada'
     },
     {
@@ -80,7 +81,20 @@ export function ContactForm() {
                   </div>
                   <div>
                     <div className="font-semibold text-slate-900">{info.label}</div>
-                    <div className="text-brand-600 font-medium">{info.value}</div>
+                    <div className="font-medium">
+                      {info.href ? (
+                        <a
+                          href={info.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-brand-600 hover:text-brand-700 underline underline-offset-4 transition-colors"
+                        >
+                          {info.value}
+                        </a>
+                      ) : (
+                        <span className="text-brand-600">{info.value}</span>
+                      )}
+                    </div>
                     <div className="text-sm text-slate-600">{info.desc}</div>
                   </div>
                 </div>

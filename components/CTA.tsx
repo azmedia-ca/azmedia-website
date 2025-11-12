@@ -91,17 +91,7 @@ export function CTA() {
             </motion.a>
           </div>
 
-          {/* Trust indicator */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.8 }}
-            className="mt-12 text-center">
-            <p className="text-brand-200 text-sm">
-              ⭐⭐⭐⭐⭐ Rated 5/5 by 50+ Calgary businesses  •  98% client satisfaction rate
-            </p>
-          </motion.div>
+         
         </motion.div>
       </div>
     </section>
