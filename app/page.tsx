@@ -53,9 +53,9 @@ export default function HomePage() {
         <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-gradient-to-br from-accent-emerald/15 to-accent-cyan/20 rounded-full blur-3xl"></div>
         <div className="container relative z-10">
           <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-100 to-brand-50 text-brand-800 px-6 py-3 rounded-full text-sm font-semibold mb-8 shadow-sm">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-100 to-brand-50 text-brand-800 px-6 py-3 rounded-full text-lg font-semibold mb-8 shadow-sm">
               <span className="w-2.5 h-2.5 bg-brand-500 rounded-full animate-pulse" />
-              Free Project Estimate
+              Get Instant Quote Estimate
             </div>
             <h2 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
               Get Your Custom Quote{' '}
@@ -79,7 +79,7 @@ export default function HomePage() {
         <div className="absolute -bottom-10 -right-10 w-96 h-96 bg-gradient-to-br from-accent-violet/10 to-brand-300/15 rounded-full blur-3xl"></div>
         <div className="container relative z-10">
           <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-100 to-brand-50 text-brand-800 px-6 py-3 rounded-full text-sm font-semibold mb-8 shadow-sm">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-100 to-brand-50 text-brand-800 px-6 py-3 rounded-full text-lg font-semibold mb-8 shadow-sm">
               <span className="w-2.5 h-2.5 bg-brand-500 rounded-full animate-pulse" />
               Let's Start the Conversation
             </div>

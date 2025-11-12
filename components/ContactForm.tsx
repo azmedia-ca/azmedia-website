@@ -34,7 +34,7 @@ export function ContactForm() {
     {
       icon: Phone,
       label: 'Call Us',
-      value: '+1 (403) 555-0123',
+      value: '+1 (587) 3936400',
       desc: 'Mon-Fri, 9AM-6PM MST'
     },
     {
@@ -152,7 +152,7 @@ export function ContactForm() {
                     className="input" 
                     value={form.phone} 
                     onChange={e=>setForm({...form,phone:e.target.value})}
-                    placeholder="+1 (403) 555-0123"
+                    placeholder="+1 (587) 3936400"
                   />
                 </Field>
               </div>

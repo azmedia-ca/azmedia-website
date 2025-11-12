@@ -49,7 +49,7 @@ export function Clients() {
       
       {/* Section header */}
       <div className="text-center mb-16">
-        <div className="inline-flex items-center gap-2 bg-brand-100 text-brand-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+        <div className="inline-flex items-center gap-2 bg-brand-100 text-brand-800 px-4 py-2 rounded-full text-lg font-medium mb-6">
           <Building2 className="w-4 h-4" />
           Client Success Stories
         </div>

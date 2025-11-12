@@ -113,7 +113,7 @@ export function Portfolio() {
   return (
     <div>
       <div className="text-center mb-20">
-        <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-100 to-brand-50 text-brand-800 px-6 py-3 rounded-full text-sm font-semibold mb-8 shadow-sm">
+        <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-100 to-brand-50 text-brand-800 px-6 py-3 rounded-full text-lg font-semibold mb-8 shadow-sm">
           <TrendingUp animation="pulse" className="w-4 h-4 text-brand-600" />
           Portfolio & Results
         </div>

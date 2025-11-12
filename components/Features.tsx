@@ -40,7 +40,7 @@ export function Features() {
     <div className="relative">
       {/* Section header */}
       <div className="text-center mb-16">
-        <div className="inline-flex items-center gap-2 bg-brand-100 text-brand-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+        <div className="inline-flex items-center gap-2 bg-brand-100 text-brand-800 px-4 py-2 rounded-full text-lg font-medium mb-6">
           <Award className="w-4 h-4" />
           Why Choose AZ Media
         </div>
@@ -49,7 +49,7 @@ export function Features() {
           <span className="block text-brand-600">Drive Real Results</span>
         </h2>
         <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-          We don't just build websites and campaigns—we engineer digital experiences that 
+          We don't just build websites and campaigns, we engineer digital experiences that 
           transform your business and exceed your goals.
         </p>
       </div>

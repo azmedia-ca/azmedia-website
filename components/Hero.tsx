@@ -21,21 +21,7 @@ export function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="max-w-3xl self-start text-left order-2 lg:order-1">
             
-            {/* Premium badge */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-white/80 backdrop-blur border border-brand-200/50 rounded-full px-3 sm:px-4 py-2 mb-4 sm:mb-6">
-              <div className="flex items-center gap-1">
-                <Star animation="pulse" className="w-4 h-4 text-yellow-500 fill-current" />
-                <Star animation="pulse" className="w-4 h-4 text-yellow-500 fill-current" />
-                <Star animation="pulse" className="w-4 h-4 text-yellow-500 fill-current" />
-                <Star animation="pulse" className="w-4 h-4 text-yellow-500 fill-current" />
-                <Star animation="pulse" className="w-4 h-4 text-yellow-500 fill-current" />
-              </div>
-              <span className="text-xs sm:text-sm font-medium text-slate-700">Proudly Calgary-based • 5-star rated</span>
-            </motion.div>
+            
 
             {/* Logo with better positioning */}
             <motion.div
@@ -48,7 +34,7 @@ export function Hero() {
                 alt="AZ Media - Calgary's Premier Digital Agency"
                 width={500}
                 height={500}
-                className="rounded-xl shadow-lg"
+                className="rounded-xl "
                 style={{ width: 'clamp(80px, 25%, 120px)', height: 'auto' }}
               />
             </motion.div>
@@ -82,25 +68,7 @@ export function Hero() {
               <strong className="text-slate-800"> data-driven marketing</strong> that delivers measurable results.
             </motion.p>
 
-            {/* Social proof stats */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="grid grid-cols-3 gap-3 sm:gap-6 mb-6 sm:mb-8">
-              <div className="text-center">
-                <div className="text-lg sm:text-xl font-bold text-brand-600">320+</div>
-                <div className="text-xs text-slate-600">Projects Delivered</div>
-              </div>
-              <div className="text-center">
-                <div className="text-lg sm:text-xl font-bold text-brand-600">92%</div>
-                <div className="text-xs text-slate-600">Client Retention</div>
-              </div>
-              <div className="text-center">
-                <div className="text-lg sm:text-xl font-bold text-brand-600">10+</div>
-                <div className="text-xs text-slate-600">Years Experience</div>
-              </div>
-            </motion.div>
+           
 
             {/* Enhanced CTAs */}
             <motion.div 
@@ -113,7 +81,7 @@ export function Hero() {
                 className="group relative overflow-hidden bg-brand-600 hover:bg-brand-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-xl inline-flex items-center justify-center gap-2 text-sm">
                 <div className="absolute inset-0 bg-gradient-to-r from-brand-400 to-brand-800 opacity-0 group-hover:opacity-100 transition-opacity" />
                 <span className="relative z-10 flex items-center gap-2">
-                  Get Your Free Estimate
+                  Get Instant Quote
                   <ArrowRight animation="pulse" className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </a>
