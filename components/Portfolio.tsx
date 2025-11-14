@@ -29,73 +29,145 @@ interface CaseStudy {
 }
 
 const caseStudies: CaseStudy[] = [
+  // Marketing
   {
-    id: 'tech-startup-rebrand',
-    title: 'Complete Brand Transformation',
-    client: 'TechFlow Solutions',
-    category: 'Media & Branding',
-    description: 'A complete rebrand for a Calgary tech startup, including new identity, website, and marketing materials.',
-    challenge: 'Client had outdated branding that didn\'t reflect their innovative solutions and was losing potential clients to competitors.',
-    solution: 'Created a modern, tech-forward brand identity with clean typography, dynamic logo, and cohesive digital presence.',
+    id: 'tapari-investment-campaign',
+    title: 'Strategic Brand Positioning & Marketing',
+    client: 'Tapari Investment Inc',
+    category: 'Marketing',
+    description: 'Comprehensive brand positioning and digital marketing strategy for a growing investment firm to establish credibility and attract high-value clients.',
+    challenge: 'Tapari Investment needed to differentiate themselves in a competitive investment market and build trust with potential investors while showcasing their "Invest Smart... Live Better" philosophy.',
+    solution: 'Developed an integrated marketing strategy combining thought leadership content, targeted LinkedIn campaigns, investor webinars, and strategic partnerships to position Tapari as a trusted investment partner.',
     results: [
-      { metric: 'Brand Recognition', value: '340%', improvement: 'increase' },
-      { metric: 'Lead Generation', value: '180%', improvement: 'boost' },
-      { metric: 'Website Conversions', value: '220%', improvement: 'growth' }
+      { metric: 'Client Acquisition', value: '185%', improvement: 'increase' },
+      { metric: 'Brand Awareness', value: '240%', improvement: 'growth' },
+      { metric: 'Lead Quality', value: '165%', improvement: 'improvement' }
     ],
-    image: '/images/portfolio/techflow-preview.jpg',
-    tags: ['Brand Identity', 'Logo Design', 'Website', 'Marketing Materials'],
+    image: '/images/portfolio/tapari-preview.jpg',
+    tags: ['Brand Positioning', 'Digital Marketing', 'Content Strategy', 'Lead Generation'],
+    duration: '5 months',
+    teamSize: 4,
+    testimonial: {
+      quote: 'AZ Media helped us establish a strong market presence and attract the right investors. Their strategic approach transformed our business development.',
+      author: 'Investment Director',
+      position: 'Tapari Investment Inc'
+    }
+  },
+  // Web & Digital
+  {
+    id: 'anjam-website',
+    title: 'Corporate Website Development',
+    client: 'Anjam Group',
+    category: 'Web & Digital',
+    description: 'Modern, professional corporate website showcasing Anjam Group\'s diversified business portfolio including industrial solutions, corrosion protection, and marine services.',
+    challenge: 'Anjam Group needed a cohesive digital presence to effectively communicate their diverse business sectors while maintaining a unified corporate identity and improving lead generation.',
+    solution: 'Designed and developed a responsive corporate website with clear navigation structure, dedicated sections for each business unit, and integrated contact forms for different departments.',
+    results: [
+      { metric: 'User Engagement', value: '220%', improvement: 'increase' },
+      { metric: 'Lead Generation', value: '175%', improvement: 'boost' },
+      { metric: 'Mobile Traffic', value: '190%', improvement: 'growth' }
+    ],
+    image: '/images/portfolio/anjam-preview.png',
+    tags: ['Corporate Website', 'Responsive Design', 'Multi-sector Portfolio', 'Lead Generation'],
+    duration: '8 weeks',
+    teamSize: 4,
+    testimonial: {
+      quote: 'The website perfectly represents our diverse business operations. It\'s professional, easy to navigate, and has significantly improved our client inquiries.',
+      author: 'Business Development Manager',
+      position: 'Anjam Group'
+    }
+  },
+  {
+    id: 'messengerco-platform',
+    title: 'Corporate Gifting E-commerce Platform',
+    client: 'MessengerCo',
+    category: 'Web & Digital',
+    description: 'Custom e-commerce platform for corporate gifting services featuring instant quotes, seasonal gift collections, and streamlined ordering for businesses.',
+    challenge: 'MessengerCo needed a user-friendly platform to showcase their diverse gift collections and simplify the corporate gifting process with instant pricing and bulk order capabilities.',
+    solution: 'Built an intuitive e-commerce platform with categorized gift collections, instant quote system, custom gift options, and seamless ordering experience tailored for corporate clients.',
+    results: [
+      { metric: 'Online Orders', value: '310%', improvement: 'increase' },
+      { metric: 'Order Value', value: '145%', improvement: 'growth' },
+      { metric: 'Customer Satisfaction', value: '95%', improvement: 'rating' }
+    ],
+    image: '/images/portfolio/messengerco-preview.png',
+    tags: ['E-commerce', 'Corporate Solutions', 'Custom Platform', 'UX Design'],
+    duration: '10 weeks',
+    teamSize: 5,
+    testimonial: {
+      quote: 'The platform transformed our business operations. Clients love how easy it is to browse and order corporate gifts now.',
+      author: 'Founder',
+      position: 'MessengerCo'
+    }
+  },
+  {
+    id: 'unietal-website',
+    title: 'Digital Marketing Agency Website',
+    client: 'Unietal LLC',
+    category: 'Web & Digital',
+    description: 'Bold, creative website for a digital marketing agency showcasing their services in graphic design, e-commerce, IT consultation, and digital marketing with stunning gradient aesthetics.',
+    challenge: 'Unietal needed a website that would demonstrate their creative capabilities and technical expertise while effectively communicating their full range of digital services.',
+    solution: 'Created a visually striking website with modern gradient design, engaging animations, clear service sections, and a compelling portfolio showcase that reflects their creative approach.',
+    results: [
+      { metric: 'Client Inquiries', value: '265%', improvement: 'increase' },
+      { metric: 'Portfolio Views', value: '380%', improvement: 'boost' },
+      { metric: 'Time on Site', value: '155%', improvement: 'improvement' }
+    ],
+    image: '/images/portfolio/unietal-preview.jpg',
+    tags: ['Agency Website', 'Creative Design', 'Modern UI/UX', 'Portfolio Showcase'],
+    duration: '6 weeks',
+    teamSize: 3,
+    testimonial: {
+      quote: 'Our new website perfectly captures our creative spirit and has become our best marketing tool. Client feedback has been phenomenal.',
+      author: 'Creative Director',
+      position: 'Unietal LLC'
+    }
+  },
+  // Media & Branding
+  {
+    id: 'nano-branding',
+    title: 'Complete Brand Identity System',
+    client: 'Nano Business',
+    category: 'Media & Branding',
+    description: 'Comprehensive brand identity development for a business management firm including logo design, color system, signage, and brand guidelines.',
+    challenge: 'Nano Business needed a professional brand identity to establish their presence in the business management sector and build credibility with potential clients.',
+    solution: 'Developed a modern, geometric brand identity with distinctive logo, cohesive color palette of navy and green, professional signage design, and comprehensive brand guidelines for consistent application.',
+    results: [
+      { metric: 'Brand Recognition', value: '290%', improvement: 'increase' },
+      { metric: 'Client Trust', value: '85%', improvement: 'rating' },
+      { metric: 'Market Presence', value: '210%', improvement: 'growth' }
+    ],
+    image: '/images/portfolio/nano-preview.jpg',
+    tags: ['Brand Identity', 'Logo Design', 'Signage', 'Brand Guidelines'],
+    duration: '5 weeks',
+    teamSize: 3,
+    testimonial: {
+      quote: 'The brand identity they created perfectly represents our professional approach. We now have a strong, recognizable presence in our market.',
+      author: 'Managing Director',
+      position: 'Nano Business'
+    }
+  },
+  {
+    id: 'neurize-branding',
+    title: 'Brand System & Collateral Design',
+    client: 'Neurize',
+    category: 'Media & Branding',
+    description: 'Complete brand system development including logo design, color palette, business cards, packaging, and promotional materials with distinctive coral/orange branding.',
+    challenge: 'Neurize required a cohesive brand identity that would work across all touchpoints from digital to print while creating memorable brand recognition.',
+    solution: 'Created a comprehensive brand system with clean, modern logo, distinctive coral color scheme, professional business card design, branded packaging, and consistent visual language across all materials.',
+    results: [
+      { metric: 'Brand Consistency', value: '95%', improvement: 'rating' },
+      { metric: 'Brand Recall', value: '245%', improvement: 'increase' },
+      { metric: 'Client Impressions', value: '88%', improvement: 'positive' }
+    ],
+    image: '/images/portfolio/neurize-preview.png',
+    tags: ['Brand System', 'Visual Identity', 'Collateral Design', 'Brand Consistency'],
     duration: '6 weeks',
     teamSize: 4,
     testimonial: {
-      quote: 'AZ Media transformed our entire business presence. The new brand has opened doors we never thought possible.',
-      author: 'Sarah Chen',
-      position: 'CEO, TechFlow Solutions'
-    }
-  },
-  {
-    id: 'restaurant-digital-campaign',
-    title: 'Digital Marketing Campaign',
-    client: 'Bella Vista Restaurant',
-    category: 'Marketing',
-    description: 'Multi-channel digital marketing campaign to increase reservations and brand awareness for a high-end Calgary restaurant.',
-    challenge: 'Restaurant was struggling with low visibility and declining reservations post-pandemic.',
-    solution: 'Developed integrated social media strategy, Google Ads campaigns, and influencer partnerships focused on Calgary food scene.',
-    results: [
-      { metric: 'Reservations', value: '290%', improvement: 'increase' },
-      { metric: 'Social Engagement', value: '450%', improvement: 'growth' },
-      { metric: 'Online Reviews', value: '380%', improvement: 'boost' }
-    ],
-    image: '/images/portfolio/bellavista-preview.jpg',
-    tags: ['Social Media', 'Google Ads', 'Influencer Marketing', 'Content Creation'],
-    duration: '3 months',
-    teamSize: 3,
-    testimonial: {
-      quote: 'Our restaurant went from empty tables to fully booked weekends. The team understood our vision perfectly.',
-      author: 'Marco Rossi',
-      position: 'Owner, Bella Vista Restaurant'
-    }
-  },
-  {
-    id: 'ecommerce-platform',
-    title: 'E-commerce Platform Development',
-    client: 'Mountain Gear Co.',
-    category: 'Web & Digital',
-    description: 'Custom e-commerce platform with advanced inventory management and customer personalization features.',
-    challenge: 'Growing outdoor gear retailer needed scalable e-commerce solution to handle increased online demand.',
-    solution: 'Built custom Next.js e-commerce platform with advanced filtering, personalization, and seamless checkout experience.',
-    results: [
-      { metric: 'Online Sales', value: '520%', improvement: 'increase' },
-      { metric: 'Page Speed', value: '75%', improvement: 'improvement' },
-      { metric: 'Customer Retention', value: '160%', improvement: 'growth' }
-    ],
-    image: '/images/portfolio/mountaingear-preview.jpg',
-    tags: ['Next.js', 'E-commerce', 'Custom Development', 'Performance Optimization'],
-    duration: '4 months',
-    teamSize: 5,
-    testimonial: {
-      quote: 'The platform they built scaled with our rapid growth. Technical excellence meets beautiful design.',
-      author: 'David Kim',
-      position: 'Founder, Mountain Gear Co.'
+      quote: 'AZ Media delivered a complete brand system that works beautifully across every application. Our brand now feels professional and cohesive.',
+      author: 'CEO',
+      position: 'Neurize'
     }
   }
 ]
@@ -163,6 +235,11 @@ export function Portfolio() {
             <div className="card overflow-hidden hover:shadow-2xl transition-all duration-500 group-hover:ring-2 group-hover:ring-brand-200 h-full flex flex-col">
               {/* Enhanced image with better placeholder */}
               <div className="h-56 bg-gradient-to-br from-brand-100 via-brand-50 to-brand-200 relative overflow-hidden">
+                <img
+                  src={study.image}
+                  alt={`${study.client} - ${study.title}`}
+                  className="w-full h-full object-cover"
+                />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                 
                 {/* Category badge */}
