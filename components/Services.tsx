@@ -10,10 +10,10 @@ const services = [
     desc: 'Data-driven campaigns that amplify your brand and accelerate growth across all channels.',
     points: [
       { name: 'Social Media Strategy', highlight: true },
-      { name: 'Content Marketing', highlight: false },
-      { name: 'Email Automation', highlight: false },
+      { name: 'Content Marketing', highlight: true },
+      { name: 'Email Automation', highlight: true },
       { name: 'Paid Advertising', highlight: true },
-      { name: 'SEO & Analytics', highlight: false }
+      { name: 'SEO & Analytics', highlight: true }
     ],
     gradientFrom: 'from-accent-rose',
     gradientTo: 'to-accent-amber',
@@ -28,9 +28,9 @@ const services = [
     points: [
       { name: 'Next.js Development', highlight: true },
       { name: 'E-commerce Platforms', highlight: true },
-      { name: 'Custom Integrations', highlight: false },
-      { name: 'Performance Optimization', highlight: false },
-      { name: 'Mobile-First Design', highlight: false }
+      { name: 'Custom Integrations', highlight: true },
+      { name: 'Performance Optimization', highlight: true },
+      { name: 'Mobile-First Design', highlight: true }
     ],
     gradientFrom: 'from-accent-emerald',
     gradientTo: 'to-accent-cyan',
@@ -44,9 +44,9 @@ const services = [
     desc: 'Distinctive visual identities and compelling content that captivate and convert.',
     points: [
       { name: 'Brand Identity Design', highlight: true },
-      { name: 'Motion Graphics', highlight: false },
-      { name: 'Professional Photography', highlight: false },
-      { name: 'Marketing Materials', highlight: false },
+      { name: 'Motion Graphics', highlight: true },
+      { name: 'Professional Photography', highlight: true },
+      { name: 'Marketing Materials', highlight: true },
       { name: 'Brand Guidelines', highlight: true }
     ],
     gradientFrom: 'from-accent-violet',

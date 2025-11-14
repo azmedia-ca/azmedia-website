@@ -229,8 +229,7 @@ export function Portfolio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="group cursor-pointer h-full"
-            onClick={() => setSelectedCase(study)}
+            className="group h-full"
           >
             <div className="card overflow-hidden hover:shadow-2xl transition-all duration-500 group-hover:ring-2 group-hover:ring-brand-200 h-full flex flex-col">
               {/* Enhanced image with better placeholder */}
@@ -249,44 +248,15 @@ export function Portfolio() {
                   </span>
                 </div>
                 
-                {/* Results preview badges */}
-                <div className="absolute top-4 left-4 flex gap-2">
-                  <span className="bg-green-500/90 text-white text-xs px-2 py-1 rounded-full font-semibold">
-                    {study.results[0].value} ROI
-                  </span>
-                </div>
-                
-                {/* Duration badge */}
-                <div className="absolute bottom-4 right-4">
-                  <div className="bg-white/95 backdrop-blur rounded-xl p-2 shadow-sm">
-                    <div className="text-xs text-slate-600 font-medium">{study.duration}</div>
-                  </div>
-                </div>
               </div>
 
               <div className="p-8 flex-1 flex flex-col">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 className="font-bold text-lg mb-2 group-hover:text-brand-700 transition-colors">{study.title}</h3>
-                    <p className="text-brand-600 font-semibold">{study.client}</p>
-                  </div>
-                  <div className="flex items-center gap-1 text-xs text-slate-500">
-                    <Users animation="pulse" className="w-3 h-3" />
-                    {study.teamSize}
-                  </div>
+                <div className="mb-4">
+                  <h3 className="font-bold text-lg mb-2 group-hover:text-brand-700 transition-colors">{study.title}</h3>
+                  <p className="text-brand-600 font-semibold">{study.client}</p>
                 </div>
                 
                 <p className="text-slate-600 mb-6 line-clamp-2 leading-relaxed flex-1">{study.description}</p>
-                
-                {/* Enhanced Results Preview */}
-                <div className="grid grid-cols-3 gap-4 mb-4">
-                  {study.results.slice(0, 3).map((result, idx) => (
-                    <div key={idx} className="text-center p-3 bg-slate-50 rounded-lg group-hover:bg-brand-50 transition-colors">
-                      <div className="text-xl font-bold text-brand-600 mb-1">{result.value}</div>
-                      <div className="text-xs text-slate-600 font-medium">{result.metric}</div>
-                    </div>
-                  ))}
-                </div>
 
                 {/* Tags preview */}
                 <div className="flex flex-wrap gap-1">
