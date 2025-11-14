@@ -23,8 +23,8 @@ export function Footer() {
   const resources = [
     { name: 'Free Consultation', href: '#contact' },
     { name: 'Project Estimate', href: '#estimate' },
-    { name: 'Privacy Policy', href: '#' },
-    { name: 'Terms of Service', href: '#' }
+    { name: 'Privacy Policy', href: '/privacy-and-policy' },
+    { name: 'Terms of Service', href: '/terms-of-services' }
   ]
 
   return (
@@ -195,8 +195,8 @@ export function Footer() {
             </div>
             
             <div className="flex items-center gap-6 text-sm">
-              <a href="#" className="text-slate-400 hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="text-slate-400 hover:text-white transition-colors">Terms of Service</a>
+              <a href="/privacy-and-policy" className="text-slate-400 hover:text-white transition-colors">Privacy Policy</a>
+              <a href="/terms-of-services" className="text-slate-400 hover:text-white transition-colors">Terms of Service</a>
               <div className="flex items-center gap-2 text-slate-500">
                 <Award className="w-4 h-4" />
                 <span>Premium Quality Guaranteed</span>
