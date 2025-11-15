@@ -1,5 +1,5 @@
 import React from 'react'
-import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer'
+import { Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer'
 
 // Define styles for the PDF
 const styles = StyleSheet.create({
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     color: '#333333',
   },
   header: {
-    backgroundColor: '#667eea',
+    backgroundColor: '#14b8a6',
     padding: 30,
     marginBottom: 30,
     borderRadius: 8,
@@ -34,10 +34,10 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#667eea',
+    color: '#0d9488',
     marginBottom: 12,
     paddingBottom: 6,
-    borderBottom: '2px solid #667eea',
+    borderBottom: '2px solid #14b8a6',
   },
   infoRow: {
     flexDirection: 'row',
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   estimateBox: {
     backgroundColor: '#f3f4f6',
-    border: '2px solid #667eea',
+    border: '2px solid #14b8a6',
     borderRadius: 8,
     padding: 20,
     marginTop: 15,
@@ -77,14 +77,14 @@ const styles = StyleSheet.create({
   estimateTotal: {
     marginTop: 10,
     paddingTop: 10,
-    borderTop: '2px solid #667eea',
+    borderTop: '2px solid #14b8a6',
   },
   estimateTotalRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#667eea',
+    color: '#0d9488',
   },
   featureItem: {
     padding: 8,
@@ -112,6 +112,12 @@ const styles = StyleSheet.create({
     fontSize: 9,
     color: '#6b7280',
     fontStyle: 'italic',
+  },
+  logo: {
+    width: 50,
+    height: 50,
+    marginBottom: 10,
+    alignSelf: 'center',
   },
 })
 
@@ -146,6 +152,10 @@ export const EstimatePDF: React.FC<EstimatePDFProps> = ({ info, selection, featu
       <Page size="A4" style={styles.page}>
         {/* Header */}
         <View style={styles.header}>
+          <Image
+            src="/images/Logo.png"
+            style={styles.logo}
+          />
           <Text style={styles.headerTitle}>Project Estimate</Text>
           <Text style={styles.headerSubtitle}>AZ Media - Your Digital Partner</Text>
         </View>
