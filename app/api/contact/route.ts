@@ -25,9 +25,11 @@ export async function POST(req: Request) {
       <p>${message}</p>
     `
 
+    const receivers = process.env.RECEIVERS?.split(',').map(email => email.trim()) || ['info@az-media.ca']
+
     await resend.emails.send({
       from: process.env.RESEND_FROM || 'AZ Media <noreply@updates.az-media.ca>',
-      to: 'info@az-media.ca',
+      to: receivers,
       subject: `Contact — ${name}`,
       html
     })
