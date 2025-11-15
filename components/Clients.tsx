@@ -28,22 +28,25 @@ const clients: { name: string; industry: string; icon: LucideIcon }[] = [
 
 const testimonials = [
   {
-    quote: "Professional service and attention to detail. They understand our business needs and deliver quality solutions.",
-    author: "M. Moussa",
+    quote: "Working with AZ Media to revamp our company's visual identity was an amazing experience! They truly blew me away with their attention to detail in the design, colors, and concept. They captured our brand's vibe perfectly. If you want to elevate your brand, definitely check out AZ Media!",
+    author: "Ali Cisse",
+    position: "Public Relations Manager",
+    company: "Anjam Group",
+    avatar: "AC"
+  },
+  {
+    quote: "Professional service with great attention to detail. The team truly understands our business needs and delivers high-quality solutions in AI consultation and eCommerce website development.",
+    author: "M.Moussa",
     position: "CTO",
-    avatar: "T"
+    company: "Messenger Co",
+    avatar: "MM"
   },
   {
-    quote: "Great communication throughout the project. They helped us improve our digital presence effectively.",
-    author: "Hospitality Sector",
-    position: "Client",
-    avatar: "H"
-  },
-  {
-    quote: "Reliable partner for our digital needs. The team is responsive and delivers on time.",
-    author: "E-commerce Sector",
-    position: "Client",
-    avatar: "E"
+    quote: "AZ Media played a key role in developing our brand identity and proposal structure. Their visual design, AI consultation, and branding support helped us communicate Tapari Real Estate's vision with clarity and confidence. Highly recommended.",
+    author: "Robert",
+    position: "Founder & CEO",
+    company: "Tapari Real Estate",
+    avatar: "R"
   }
 ]
 
@@ -158,12 +161,13 @@ export function Clients() {
               
               {/* Author */}
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 font-bold">
+                <div className="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 font-bold text-sm">
                   {testimonial.avatar}
                 </div>
                 <div>
                   <div className="font-semibold text-slate-900">{testimonial.author}</div>
                   <div className="text-sm text-slate-600">{testimonial.position}</div>
+                  <div className="text-sm text-brand-600 font-medium">{testimonial.company}</div>
                 </div>
               </div>
             </div>
