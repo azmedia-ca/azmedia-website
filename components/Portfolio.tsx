@@ -9,7 +9,7 @@ interface CaseStudy {
   id: string
   title: string
   client: string
-  category: 'Marketing' | 'Web & Digital' | 'Media & Branding'
+  category: 'Digital Marketing' | 'Web & Digital' | 'Media & Branding'
   description: string
   challenge: string
   solution: string
@@ -30,12 +30,12 @@ interface CaseStudy {
 }
 
 const caseStudies: CaseStudy[] = [
-  // Marketing
+  // Digital Marketing
   {
     id: 'tapari-investment-campaign',
     title: 'Strategic Brand Positioning & Marketing',
     client: 'Tapari Investment Inc',
-    category: 'Marketing',
+    category: 'Digital Marketing',
     description: 'Comprehensive brand positioning and digital marketing strategy for a growing investment firm to establish credibility and attract high-value clients.',
     challenge: 'Tapari Investment needed to differentiate themselves in a competitive investment market and build trust with potential investors while showcasing their "Invest Smart... Live Better" philosophy.',
     solution: 'Developed an integrated marketing strategy combining thought leadership content, targeted LinkedIn campaigns, investor webinars, and strategic partnerships to position Tapari as a trusted investment partner.',
@@ -173,7 +173,7 @@ const caseStudies: CaseStudy[] = [
   }
 ]
 
-const categories = ['All', 'Marketing', 'Web & Digital', 'Media & Branding']
+const categories = ['All', 'Digital Marketing', 'Web & Digital', 'Media & Branding']
 
 export function Portfolio() {
   const [activeCategory, setActiveCategory] = useState<string>('All')

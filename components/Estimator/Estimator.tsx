@@ -21,7 +21,7 @@ export function Estimator() {
   const [sent, setSent] = useState(false)
 
   const [info, setInfo] = useState<Info>({ name: '', email: '', projectName: '' })
-  const [service, setService] = useState<ServiceKey>('Marketing')
+  const [service, setService] = useState<ServiceKey>('Digital Marketing')
   const [items, setItems] = useState<Record<string, number>>({})
   const [complexity, setComplexity] = useState<typeof COMPLEXITY[number]['key']>('standard')
 
@@ -144,7 +144,7 @@ export function Estimator() {
                 <div>
                   <h3 className="font-semibold text-lg mb-4 text-brand-700">Choose Your Service</h3>
                   <div className="grid md:grid-cols-3 gap-3">
-                    {(['Marketing','Web & Digital Solutions','Media & Branding'] as ServiceKey[]).map(s => (
+                    {(['Digital Marketing','Web & Digital Solutions','Media & Branding'] as ServiceKey[]).map(s => (
                       <motion.button
                         key={s}
                         onClick={() => setService(s)}

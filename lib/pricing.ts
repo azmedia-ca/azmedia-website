@@ -1,13 +1,13 @@
-export type ServiceKey = 'Marketing' | 'Web & Digital Solutions' | 'Media & Branding'
+export type ServiceKey = 'Digital Marketing' | 'Web & Digital Solutions' | 'Media & Branding'
 
 export const BASE: Record<ServiceKey, number> = {
-  'Marketing': 5000,
+  'Digital Marketing': 5000,
   'Web & Digital Solutions': 7500,
   'Media & Branding': 6500
 }
 
 export const FEATURES: Record<ServiceKey, {key: string, label: string, unit: number, qty?: boolean}[]> = {
-  'Marketing': [
+  'Digital Marketing': [
     { key: 'social_kit', label: 'Social media kit', unit: 1500 },
     { key: 'content_calendar', label: 'Content calendar', unit: 1200 },
     { key: 'paid_ads', label: 'Paid ads setup', unit: 2500 },

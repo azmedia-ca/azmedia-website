@@ -6,7 +6,7 @@ import { Megaphone } from 'lucide-react'
 const services = [
   {
     icon: Marketing,
-    title: 'Strategic Marketing',
+    title: 'Strategic Digital Marketing',
     desc: 'Data-driven campaigns that amplify your brand and accelerate growth across all channels.',
     points: [
       { name: 'Social Media Strategy', highlight: true },
