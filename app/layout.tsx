@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import './globals.css'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 import { Plus_Jakarta_Sans, Inter } from 'next/font/google'
 import { SmoothScroll } from '@/components/SmoothScroll'
 
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${jakarta.variable} ${inter.variable}`}>
       <body>
+        <GoogleAnalytics />
         <SmoothScroll/>
         <Header />
         {children}

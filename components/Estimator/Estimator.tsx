@@ -1,7 +1,9 @@
 'use client'
 import React, { useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { pdf } from '@react-pdf/renderer'
 import { Progress } from './Progress'
+import { EstimatePDF } from './EstimatePDF'
 import { FEATURES, BASE, COMPLEXITY, estimateTotal, type ServiceKey } from '@/lib/pricing'
 import { Loader2 } from 'lucide-react'
 
@@ -64,6 +66,30 @@ export function Estimator() {
       console.error(e)
     } finally {
       setSending(false)
+    }
+  }
+
+  async function downloadPDF() {
+    try {
+      const blob = await pdf(
+        <EstimatePDF
+          info={info}
+          selection={{ service, complexity, daysUntil }}
+          features={items}
+          estimate={estimate}
+        />
+      ).toBlob()
+
+      const url = URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.download = `${info.projectName || 'estimate'}-${Date.now()}.pdf`
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      URL.revokeObjectURL(url)
+    } catch (error) {
+      console.error('Error generating PDF:', error)
     }
   }
 
@@ -252,12 +278,12 @@ export function Estimator() {
                       <span>Total (CAD):</span><span>${estimate.total}</span>
                     </li>
                   </ul>
-                  <motion.button 
-                    onClick={() => window.print()} 
+                  <motion.button
+                    onClick={downloadPDF}
                     className="btn-ghost mt-3 w-full h-8"
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}>
-                    📄 Save as PDF
+                    📄 Download as PDF
                   </motion.button>
                 </motion.div>
                 
