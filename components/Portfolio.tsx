@@ -1,6 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import Image from 'next/image'
 import { TrendingUp, Users } from '@/components/icons/AnimatedIcons'
 import { Calendar } from 'lucide-react'
 
@@ -234,10 +235,11 @@ export function Portfolio() {
             <div className="card overflow-hidden hover:shadow-2xl transition-all duration-500 group-hover:ring-2 group-hover:ring-brand-200 h-full flex flex-col">
               {/* Enhanced image with better placeholder */}
               <div className="h-56 bg-gradient-to-br from-brand-100 via-brand-50 to-brand-200 relative overflow-hidden">
-                <img
+                <Image
                   src={study.image}
                   alt={`${study.client} - ${study.title}`}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                 

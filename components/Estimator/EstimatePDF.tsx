@@ -1,5 +1,5 @@
 import React from 'react'
-import { Document, Page, Text, View, StyleSheet, Font } from '@react-pdf/renderer'
+import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer'
 
 // Define styles for the PDF
 const styles = StyleSheet.create({
@@ -139,7 +139,7 @@ type EstimatePDFProps = {
 }
 
 export const EstimatePDF: React.FC<EstimatePDFProps> = ({ info, selection, features, estimate }) => {
-  const selectedFeatures = Object.entries(features).filter(([_, qty]) => qty > 0)
+  const selectedFeatures = Object.entries(features).filter(([, qty]) => qty > 0)
 
   return (
     <Document>

@@ -21,7 +21,7 @@ export async function POST(req: Request) {
 
     // Format features list
     const featuresList = Object.entries(features)
-      .filter(([_, qty]) => (qty as number) > 0)
+      .filter(([, qty]) => (qty as number) > 0)
       .map(([key, qty]) => `<li><strong>${key}:</strong> ${qty}</li>`)
       .join('')
 
