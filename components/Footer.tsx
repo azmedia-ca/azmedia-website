@@ -88,9 +88,9 @@ export function Footer() {
               {/* Social links */}
               <div className="flex gap-4">
                 {[
-                  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-                  { icon: Instagram, href: '#', label: 'Instagram' },
-                  { icon: Facebook, href: '#', label: 'Facebook' }
+                  { icon: Linkedin, href: 'https://www.linkedin.com/company/109464810', label: 'LinkedIn' },
+                  { icon: Instagram, href: 'https://www.instagram.com/azmediaca/', label: 'Instagram' },
+                  { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61579442004540', label: 'Facebook' }
                 ].map(({ icon: Icon, href, label }) => (
                   <a
                     key={label}
