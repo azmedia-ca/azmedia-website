@@ -93,8 +93,10 @@ export function Footer() {
                   { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61579442004540', label: 'Facebook' }
                 ].map(({ icon: Icon, href, label }) => (
                   <a
-                    key={label}
+                    key={label} 
                     href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={label}
                     className="w-10 h-10 bg-slate-800 hover:bg-brand-600 rounded-xl flex items-center justify-center text-slate-400 hover:text-white transition-all duration-300 hover:scale-110">
                     <Icon className="w-5 h-5" />
