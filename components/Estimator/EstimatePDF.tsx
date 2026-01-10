@@ -86,6 +86,27 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#0d9488',
   },
+  strikethrough: {
+    textDecoration: 'line-through',
+    color: '#6b7280',
+  },
+  discountBadge: {
+    backgroundColor: '#ccfbf1',
+    color: '#0d9488',
+    padding: '6px 12px',
+    borderRadius: 4,
+    fontSize: 10,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginVertical: 8,
+  },
+  finalPriceRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#dc2626',
+  },
   featureItem: {
     padding: 8,
     backgroundColor: '#f9fafb',
@@ -142,9 +163,10 @@ type EstimatePDFProps = {
     urgency: number
     total: number
   }
+  discountEnabled?: boolean
 }
 
-export const EstimatePDF: React.FC<EstimatePDFProps> = ({ info, selection, features, estimate }) => {
+export const EstimatePDF: React.FC<EstimatePDFProps> = ({ info, selection, features, estimate, discountEnabled = false }) => {
   const selectedFeatures = Object.entries(features).filter(([, qty]) => qty > 0)
 
   return (
@@ -238,10 +260,26 @@ export const EstimatePDF: React.FC<EstimatePDFProps> = ({ info, selection, featu
             </View>
 
             <View style={styles.estimateTotal}>
-              <View style={styles.estimateTotalRow}>
-                <Text>Total Estimate:</Text>
-                <Text>${estimate.total.toLocaleString()} CAD</Text>
-              </View>
+              {discountEnabled ? (
+                <>
+                  <View style={[styles.estimateTotalRow, styles.strikethrough]}>
+                    <Text>Total Estimate:</Text>
+                    <Text>${estimate.total.toLocaleString()} CAD</Text>
+                  </View>
+                  <View style={styles.discountBadge}>
+                    <Text>Opening Offer: 50% OFF</Text>
+                  </View>
+                  <View style={styles.finalPriceRow}>
+                    <Text>Final Price:</Text>
+                    <Text>${Math.round(estimate.total * 0.5).toLocaleString()} CAD</Text>
+                  </View>
+                </>
+              ) : (
+                <View style={styles.estimateTotalRow}>
+                  <Text>Total Estimate:</Text>
+                  <Text>${estimate.total.toLocaleString()} CAD</Text>
+                </View>
+              )}
             </View>
           </View>
 

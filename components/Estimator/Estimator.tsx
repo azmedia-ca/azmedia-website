@@ -25,6 +25,8 @@ export function Estimator() {
   const [items, setItems] = useState<Record<string, number>>({})
   const [complexity, setComplexity] = useState<typeof COMPLEXITY[number]['key']>('standard')
 
+  const discountEnabled = process.env.NEXT_PUBLIC_ENABLE_DISCOUNT === 'true'
+
   const daysUntil = useMemo(() => {
     if (!info.deliveryDate) return 30
     const target = new Date(info.deliveryDate).getTime()
@@ -36,6 +38,10 @@ export function Estimator() {
   const estimate = useMemo(() => {
     return estimateTotal(service, items, complexity, daysUntil)
   }, [service, items, complexity, daysUntil])
+
+  const isStep0Valid = useMemo(() => {
+    return !!(info.name && info.email && info.company && info.deliveryDate && info.projectName)
+  }, [info])
 
   function setQty(key: string, next: number) {
     setItems(prev => {
@@ -77,6 +83,7 @@ export function Estimator() {
           selection={{ service, complexity, daysUntil }}
           features={items}
           estimate={estimate}
+          discountEnabled={discountEnabled}
         />
       ).toBlob()
 
@@ -113,19 +120,19 @@ export function Estimator() {
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="flex-1 flex flex-col justify-center">
               <div className="grid md:grid-cols-2 gap-4">
-              <Field label="Full name">
+              <Field label="Full name" required>
                 <input className="input" value={info.name} onChange={e => setInfo({ ...info, name: e.target.value })} placeholder="Jane Doe" />
               </Field>
-              <Field label="Email">
+              <Field label="Email" required>
                 <input className="input" type="email" value={info.email} onChange={e => setInfo({ ...info, email: e.target.value })} placeholder="jane@company.com" />
               </Field>
-              <Field label="Company">
+              <Field label="Company" required>
                 <input className="input" value={info.company || ''} onChange={e => setInfo({ ...info, company: e.target.value })} placeholder="Company Inc." />
               </Field>
-              <Field label="Preferred delivery date">
+              <Field label="Preferred delivery date" required>
                 <input className="input" type="date" value={info.deliveryDate || ''} onChange={e => setInfo({ ...info, deliveryDate: e.target.value })} />
               </Field>
-              <Field label="Project name" className="md:col-span-2">
+              <Field label="Project name" className="md:col-span-2" required>
                 <input className="input" value={info.projectName} onChange={e => setInfo({ ...info, projectName: e.target.value })} placeholder="Website redesign" />
               </Field>
               </div>
@@ -274,9 +281,23 @@ export function Estimator() {
                     <li className="flex justify-between"><span>Features Subtotal:</span><span className="font-medium">${estimate.subtotal}</span></li>
                     <li className="flex justify-between"><span>Complexity Multiplier:</span><span className="font-medium">×{estimate.complexity.toFixed(2)}</span></li>
                     <li className="flex justify-between"><span>Urgency Multiplier:</span><span className="font-medium">×{estimate.urgency.toFixed(2)}</span></li>
-                    <li className="flex justify-between font-semibold text-lg text-brand-700 border-t pt-2">
-                      <span>Total (CAD):</span><span>${estimate.total}</span>
-                    </li>
+                    {discountEnabled ? (
+                      <>
+                        <li className="flex justify-between font-semibold text-lg text-slate-700 border-t pt-2">
+                          <span>Total (CAD):</span><span className="line-through">${estimate.total}</span>
+                        </li>
+                        <li className="flex justify-between items-center">
+                          <span className="text-xs text-brand-600 font-medium bg-brand-100 px-2 py-1 rounded">Opening Offer: 50% OFF</span>
+                        </li>
+                        <li className="flex justify-between font-bold text-xl text-red-600">
+                          <span>Final Price:</span><span>${Math.round(estimate.total * 0.5)}</span>
+                        </li>
+                      </>
+                    ) : (
+                      <li className="flex justify-between font-semibold text-lg text-brand-700 border-t pt-2">
+                        <span>Total (CAD):</span><span>${estimate.total}</span>
+                      </li>
+                    )}
                   </ul>
                   <motion.button
                     onClick={downloadPDF}
@@ -354,9 +375,10 @@ export function Estimator() {
         {step < 3 ? (
           <motion.button
             onClick={() => setStep(s => Math.min(3, s + 1))}
-            className="btn-primary"
-            whileHover={{ scale: 1.01 }}
-            whileTap={{ scale: 0.98 }}>
+            className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={step === 0 && !isStep0Valid}
+            whileHover={!(step === 0 && !isStep0Valid) ? { scale: 1.01 } : {}}
+            whileTap={!(step === 0 && !isStep0Valid) ? { scale: 0.98 } : {}}>
             Next →
           </motion.button>
         ) : (
@@ -367,10 +389,13 @@ export function Estimator() {
   )
 }
 
-function Field({ children, label, className }: React.PropsWithChildren<{label: string, className?: string}>) {
+function Field({ children, label, className, required }: React.PropsWithChildren<{label: string, className?: string, required?: boolean}>) {
   return (
     <div className={className}>
-      <div className="label">{label}</div>
+      <div className="label">
+        {label}
+        {required && <span className="text-red-600 ml-1">*</span>}
+      </div>
       {children}
     </div>
   )
